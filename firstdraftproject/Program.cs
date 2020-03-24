@@ -46,6 +46,11 @@ namespace firstdraftproject
                     Console.WriteLine("Input the character(s) in the brackets.\n Example: if displayed [yes] then you need to enter yes. Uppercase or lowercase does not matter ");
 
                 }
+                else if (revMenu.Equals("eyy admin", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("-- Welcome to the AAADMINNNN page--");
+                    //HIERO NAAR ADMIN PAGINA EN DAN KAN JE DAAR DINGEN AANPASSEN
+                }
                 else
                 {
                     Console.WriteLine("Not a valid input, please try again............");
