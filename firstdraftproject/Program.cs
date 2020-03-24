@@ -48,9 +48,8 @@ namespace firstdraftproject
                 }
                 else if (revMenu.Equals("eyy admin", StringComparison.OrdinalIgnoreCase))
                 {
-
-                    Console.WriteLine(" Dit was admin joehoe ");
-
+                    Console.WriteLine("-- Welcome to the AAADMINNNN page--");
+                    //HIERO NAAR ADMIN PAGINA EN DAN KAN JE DAAR DINGEN AANPASSEN
                 }
                 else
                 {
