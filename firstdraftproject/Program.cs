@@ -48,7 +48,7 @@ namespace firstdraftproject
                 }
                 else
                 {
-                    Console.WriteLine("Not a valid input, please try again.");
+                    Console.WriteLine("Not a valid input, please try again............");
                 }
 
             }
