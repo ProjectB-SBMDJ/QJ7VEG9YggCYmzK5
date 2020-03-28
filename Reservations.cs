@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DaVinci {
-    class Reservations {
-        static void Main(string[] args) {
+namespace testproject1 {
+    public class Reservations {
+        public static void ReservationSystem() {
 
             //VARIABLES
             string reservationName;
             string reservationTime;
             string reservationAmount;
+            string menuSelection;
+
+            bool menuRunning = true;
+
             IList<string> reservations = new List<string>();
 
             Random random = new Random();
@@ -36,6 +40,10 @@ namespace DaVinci {
                 return random.Next(1, 1000);
             }
 
+            void readMenuInput() {
+                menuSelection = Console.ReadLine();
+            }
+
             void makeReservation() {
                 string name = getName();
                 string time = getTime();
@@ -50,8 +58,30 @@ namespace DaVinci {
                     Console.WriteLine(el);
 			}
 
-            makeReservation();
-            viewReservation();
+            void menuHelp() {
+                Console.WriteLine("Enter \'make\' to make a new reservation \nEnter \'view\' to view all reservations");
+            }
+
+            //Reservation Menu
+            Console.WriteLine("----Welcome to the Reservation System----");
+            
+            while (menuRunning) {
+                readMenuInput();
+                switch (menuSelection) {
+                    case "make":
+                        makeReservation();
+                        break;
+                    case "view":
+                        viewReservation();
+                        break;
+                    case "help":
+                        menuHelp();
+                        break;
+                    case "exit":
+                        menuRunning = false;
+                        break;
+                }
+            }
         }
     }
 }
