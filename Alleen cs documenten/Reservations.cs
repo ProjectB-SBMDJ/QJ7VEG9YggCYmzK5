@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace DaVinci {
-    class Program {
+    class Reservations {
         static void Main(string[] args) {
 
             //VARIABLES
@@ -10,6 +10,8 @@ namespace DaVinci {
             string reservationTime;
             string reservationAmount;
             IList<string> reservations = new List<string>();
+
+            Random random = new Random();
 
             //FUNTIONS
             string getName() {
@@ -30,11 +32,16 @@ namespace DaVinci {
                 return reservationAmount;
             }
 
+            int generateCode() {
+                return random.Next(1, 1000);
+            }
+
             void makeReservation() {
                 string name = getName();
                 string time = getTime();
                 string amount = getAmount();
-                string reservation = "Reservation for " + amount + " people at " + time + " under the name: " + name;
+                int code = generateCode();
+                string reservation = "Code: " + code + "    Name: " + name + "  Time: " + time + "  Amount of Guests: " + amount;
                 reservations.Add(reservation);
             }
 
