@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/aaa/Projects/projectb/projectb/projectb.csproj",
+      "projectUniqueName": "/Users/aaa/Desktop/projectb/QJ7VEG9YggCYmzK5/projectb.csproj",
       "projectName": "projectb",
-      "projectPath": "/Users/aaa/Projects/projectb/projectb/projectb.csproj",
+      "projectPath": "/Users/aaa/Desktop/projectb/QJ7VEG9YggCYmzK5/projectb.csproj",
       "packagesPath": "/Users/aaa/.nuget/packages/",
-      "outputPath": "/Users/aaa/Projects/projectb/projectb/obj/",
+      "outputPath": "/Users/aaa/Desktop/projectb/QJ7VEG9YggCYmzK5/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
