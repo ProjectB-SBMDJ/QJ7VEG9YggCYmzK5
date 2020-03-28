@@ -1,3 +1,26 @@
 ﻿<Properties StartupConfiguration="{4AFDFFD7-7A53-4493-9F31-9752FADC0759}|Default">
+  <MonoDevelop.Ide.ItemProperties.projectb PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="menu.cs">
+    <Files>
+      <File FileName="menu.cs" Line="10" Column="29" />
+      <File FileName="Reservations.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="projectb" expanded="True">
+            <Node name="projectb" expanded="True">
+              <Node name="menu.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
