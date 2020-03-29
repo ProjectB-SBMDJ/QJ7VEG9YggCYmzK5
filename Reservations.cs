@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace testproject1 {
     public class Reservations {
+
+        static IList<string> reservations = new List<string>();
+
         public static void ReservationSystem() {
 
             //VARIABLES
@@ -13,7 +16,7 @@ namespace testproject1 {
 
             bool menuRunning = true;
 
-            IList<string> reservations = new List<string>();
+            //IList<string> reservations = new List<string>();
 
             Random random = new Random();
 
@@ -22,7 +25,7 @@ namespace testproject1 {
                 Console.WriteLine("Please enter a name for the reservation ");
                 reservationName = Console.ReadLine();
                 return reservationName;
-			}
+            }
 
             string getTime() {
                 Console.WriteLine("Please enter the time of the reservation (ex: 18:00)");
@@ -62,9 +65,22 @@ namespace testproject1 {
                 Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
             }
 
+            void deleteReservation() {
+                viewReservation();
+                Console.WriteLine("Enter the code of the reservation to delete it: ");
+                string toDelete = Console.ReadLine();
+                for (int el = reservations.Count - 1; el >= 0; el--) {
+                    if (reservations[el].ToString().Contains(toDelete)) {
+                        reservations.RemoveAt(el);
+                        Console.WriteLine("...Reservation Succesfully Deleted...");
+                    }
+                    Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
+                }
+            }
+
             void menuHelp() {
                 Console.WriteLine("\n----Reservation Menu----");
-                Console.WriteLine(" [M] - Make Reservation\n [V] - View Reservations\n [E] - Exit and back to the main page\n");
+                Console.WriteLine(" [M] - Make Reservation\n [V] - View Reservations\n [D] - Delete Reservations\n [E] - Exit and back to the main page\n");
             }
 
             //Reservation Menu
@@ -80,6 +96,9 @@ namespace testproject1 {
                     case "v":
                         viewReservation();
                         break;
+                    case "d":
+                        deleteReservation();
+                        break;
                     case "help":
                         menuHelp();
                         break;
@@ -93,6 +112,7 @@ namespace testproject1 {
                         break;
                 }
             }
+            
         }
     }
 }
