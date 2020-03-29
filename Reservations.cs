@@ -25,13 +25,13 @@ namespace testproject1 {
 			}
 
             string getTime() {
-                Console.WriteLine("Please enter the time of the reservation (ex: 18:00");
+                Console.WriteLine("Please enter the time of the reservation (ex: 18:00)");
                 reservationTime = Console.ReadLine();
                 return reservationTime;
             }
 
             string getAmount() {
-                Console.WriteLine("For how many people are you reserving? ");
+                Console.WriteLine("For how many people do you want to reserve? ");
                 reservationAmount = Console.ReadLine();
                 return reservationAmount;
             }
@@ -49,36 +49,47 @@ namespace testproject1 {
                 string time = getTime();
                 string amount = getAmount();
                 int code = generateCode();
-                string reservation = "Code: " + code + "    Name: " + name + "  Time: " + time + "  Amount of Guests: " + amount;
+                string reservation = "Code: #" + code + "    Name: " + name + "  Time: " + time + "  Amount of Guests: " + amount;
                 reservations.Add(reservation);
+                Console.WriteLine("...Reservation Saved...");
+                Console.WriteLine("What would you like to do now? (enter \'help\' to see options)");
             }
 
             void viewReservation() {
+                Console.WriteLine("---------- ALL RESERVATIONS ----------");
                 foreach (var el in reservations)
                     Console.WriteLine(el);
-			}
+                Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
+            }
 
             void menuHelp() {
-                Console.WriteLine("Enter \'make\' to make a new reservation \nEnter \'view\' to view all reservations");
+                Console.WriteLine("\n----Reservation Menu----");
+                Console.WriteLine(" [M] - Make Reservation\n [V] - View Reservations\n [E] - Exit and back to the main page\n");
             }
 
             //Reservation Menu
-            Console.WriteLine("----Welcome to the Reservation System----");
-            
+            Console.WriteLine("\n----Welcome to the Reservation System----");
+            Console.WriteLine("Enter \'help\' to see the options");
+
             while (menuRunning) {
                 readMenuInput();
-                switch (menuSelection) {
-                    case "make":
+                switch (menuSelection.ToLower()) {
+                    case "m":
                         makeReservation();
                         break;
-                    case "view":
+                    case "v":
                         viewReservation();
                         break;
                     case "help":
                         menuHelp();
                         break;
-                    case "exit":
+                    case "e":
+                        Console.WriteLine("\n----Welcome Back To The Main Menu----");
+                        Console.WriteLine("Enter \'help\' to view the options!");
                         menuRunning = false;
+                        break;
+                    default:
+                        Console.WriteLine("Not a valid input, please try again.");
                         break;
                 }
             }
