@@ -15,15 +15,19 @@ namespace testproject1
             }
 
             void menuHelp() {
-                Console.WriteLine("Enter \'reviews\' to view the Reviews Menu \nEnter \'reservations\' to view the Reservation Menu");
+                Console.WriteLine(
+                    "Enter \'reviews\' to view the Reviews Menu! " +
+                    "\nEnter \'reservations\' to view the Reservation Menu! " +
+                    "\nEnter \'exit\' to shutdown the application!"
+                );
             }
 
             Console.WriteLine("Welcome to the restaurant's console application");
-            Console.WriteLine("Enter \'help\' to view the Reservation Menu");
+            Console.WriteLine("Enter \'help\' to view the options!");
 
             while (menuRunning) {
                 readMenuInput();
-                switch (menuSelection) {
+                switch (menuSelection.ToLower()) {
                     case "help":
                         menuHelp();
                         break;
