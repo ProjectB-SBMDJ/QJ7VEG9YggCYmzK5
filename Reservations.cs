@@ -20,7 +20,7 @@ namespace testproject1 {
 
             Random random = new Random();
 
-            //FUNTIONS
+            //FUNCTIONS
             string getName() {
                 Console.WriteLine("Please enter a name for the reservation ");
                 reservationName = Console.ReadLine();
