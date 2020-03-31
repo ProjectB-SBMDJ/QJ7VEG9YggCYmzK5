@@ -18,6 +18,7 @@ namespace testproject1
                 Console.WriteLine(
                     "Enter \'reviews\' to view the Reviews Menu! " +
                     "\nEnter \'reservations\' to view the Reservation Menu! " +
+                    "\nEnter \'menu\' to view the different Food Menu's! " +
                     "\nEnter \'exit\' to shutdown the application!"
                 );
             }
@@ -36,6 +37,9 @@ namespace testproject1
                         break;
                     case "reservations":
                         Reservations.ReservationSystem();
+                        break;
+                    case "menu":
+                        Menu.menu();
                         break;
                     case "exit":
                         menuRunning = false;

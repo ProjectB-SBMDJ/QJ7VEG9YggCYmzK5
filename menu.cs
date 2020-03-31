@@ -2,11 +2,11 @@
 
 namespace testproject1
 {
-    class Program
+    public class Menu
 
     {
 
-        static void Main(string[] args)
+        public static void menu()
 
         {///111
 
