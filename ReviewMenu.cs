@@ -42,6 +42,10 @@ namespace testproject1 {
                         Console.WriteLine("Enter \'help\' to view the options!");
                         menuRunning = false;
                         break;
+                    case "":        //empty input
+                    case null:      // is invalid
+                        Console.WriteLine("Empty input, please try again.");
+                        break;
                     default:
                         Console.WriteLine("Not a valid input, please try again.");
                         break;
