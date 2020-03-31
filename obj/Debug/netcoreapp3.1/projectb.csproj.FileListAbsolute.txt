@@ -22,3 +22,15 @@
 /Users/aaa/Desktop/projectb/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.dll
 /Users/aaa/Desktop/projectb/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.pdb
 /Users/aaa/Desktop/projectb/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.genruntimeconfig.cache
+/Users/danine/Documents/School/Programma's/GitHub/QJ7VEG9YggCYmzK5/bin/Debug/netcoreapp3.1/projectb.deps.json
+/Users/danine/Documents/School/Programma's/GitHub/QJ7VEG9YggCYmzK5/bin/Debug/netcoreapp3.1/projectb.runtimeconfig.json
+/Users/danine/Documents/School/Programma's/GitHub/QJ7VEG9YggCYmzK5/bin/Debug/netcoreapp3.1/projectb.runtimeconfig.dev.json
+/Users/danine/Documents/School/Programma's/GitHub/QJ7VEG9YggCYmzK5/bin/Debug/netcoreapp3.1/projectb.dll
+/Users/danine/Documents/School/Programma's/GitHub/QJ7VEG9YggCYmzK5/bin/Debug/netcoreapp3.1/projectb.pdb
+/Users/danine/Documents/School/Programma's/GitHub/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.csprojAssemblyReference.cache
+/Users/danine/Documents/School/Programma's/GitHub/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.csproj.CoreCompileInputs.cache
+/Users/danine/Documents/School/Programma's/GitHub/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.AssemblyInfoInputs.cache
+/Users/danine/Documents/School/Programma's/GitHub/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.AssemblyInfo.cs
+/Users/danine/Documents/School/Programma's/GitHub/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.dll
+/Users/danine/Documents/School/Programma's/GitHub/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.pdb
+/Users/danine/Documents/School/Programma's/GitHub/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.genruntimeconfig.cache
