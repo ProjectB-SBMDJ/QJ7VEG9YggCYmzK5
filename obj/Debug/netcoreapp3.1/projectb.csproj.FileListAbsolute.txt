@@ -22,3 +22,15 @@
 /Users/aaa/Desktop/projectb/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.dll
 /Users/aaa/Desktop/projectb/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.pdb
 /Users/aaa/Desktop/projectb/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.genruntimeconfig.cache
+/Users/musab/Documents/GitHub/QJ7VEG9YggCYmzK5/bin/Debug/netcoreapp3.1/projectb.deps.json
+/Users/musab/Documents/GitHub/QJ7VEG9YggCYmzK5/bin/Debug/netcoreapp3.1/projectb.runtimeconfig.json
+/Users/musab/Documents/GitHub/QJ7VEG9YggCYmzK5/bin/Debug/netcoreapp3.1/projectb.runtimeconfig.dev.json
+/Users/musab/Documents/GitHub/QJ7VEG9YggCYmzK5/bin/Debug/netcoreapp3.1/projectb.dll
+/Users/musab/Documents/GitHub/QJ7VEG9YggCYmzK5/bin/Debug/netcoreapp3.1/projectb.pdb
+/Users/musab/Documents/GitHub/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.csprojAssemblyReference.cache
+/Users/musab/Documents/GitHub/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.csproj.CoreCompileInputs.cache
+/Users/musab/Documents/GitHub/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.AssemblyInfoInputs.cache
+/Users/musab/Documents/GitHub/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.AssemblyInfo.cs
+/Users/musab/Documents/GitHub/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.dll
+/Users/musab/Documents/GitHub/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.pdb
+/Users/musab/Documents/GitHub/QJ7VEG9YggCYmzK5/obj/Debug/netcoreapp3.1/projectb.genruntimeconfig.cache
