@@ -6,9 +6,10 @@ namespace testproject1
     public class StarReviews
     {
 
-        static bool QA4;    //for the star menu loop
-        static bool QA5;    //for the star number loop
-        static bool QA6;    //for the star write loop
+        static bool QA6;    //for the star menu loop
+        static bool QA7;    //for the star number loop
+        static bool QA8;    //for the star write loop
+        static bool QA9;    //for the name input loop
         static string starsIn; //for the star strings
         static string readQAstar;
         static string nameIn;
@@ -21,22 +22,21 @@ namespace testproject1
         //---------------------STAR REVIEWS MENU------------------------
         public static void StarRevMenu()
         {
-            QA4 = true;
+            QA6 = true;
                 //for the question loop below
-
-            while (QA4)
+            while (QA6)
             {
                 Console.WriteLine("Do you want to see all the star reviews? [Yes] / [No]");
                 readQAstar = Console.ReadLine();
                 if (readQAstar.Equals("yes", StringComparison.OrdinalIgnoreCase))
                 {
-                    QA4 = false;
+                    QA6 = false;
                     StarRead();
                 }
                 else if (readQAstar.Equals("no", StringComparison.OrdinalIgnoreCase))
                 {
                     Console.WriteLine("You chose no, so you will go back to the main review menu.");
-                    QA4 = false;
+                    QA6 = false;
                 }
                 else
                 {
@@ -49,7 +49,7 @@ namespace testproject1
         //---------------------READ STAR REVIEWS------------------------
         public static void StarRead()
         {
-            QA6 = true;
+            QA8 = true;
             Console.WriteLine("Total number of reviews: {0}", starRevsDict.Count);
             foreach (KeyValuePair<string, string> i in starRevsDict)
             {
@@ -57,19 +57,19 @@ namespace testproject1
                     i.Key, i.Value);
             }
 
-            while (QA6)
+            while (QA8)
             {
                 Console.WriteLine("Do you want to write a review? [Yes] / [No]");
                 readQAstar = Console.ReadLine();
                 if (readQAstar.Equals("yes", StringComparison.OrdinalIgnoreCase))
                 {
                     WriteStarRevs();
-                    QA6 = false;
+                    QA8 = false;
                 }
                 else if (readQAstar.Equals("no", StringComparison.OrdinalIgnoreCase))
                 {
                     Console.WriteLine("You chose no, so you will be guided back to the first question of the written reviews page.");
-                    QA6 = false;
+                    QA8 = false;
                     StarRevMenu();
                 }
                 else
@@ -84,42 +84,60 @@ namespace testproject1
         //---------------------WRITE STAR REVIEW------------------------
         public static void WriteStarRevs()
         {
-            QA5 = true;
-            //for the number loop below
+            QA7 = true;//for the number loop below
+            QA9 = true; //for the name input
             starsIn = "";
             Console.WriteLine("~~ Leave an star review ~~");
-            Console.Write("Write your name here: ");
-            nameIn = Console.ReadLine();
-            
+            while (QA9)
+            {
+                Console.Write("Write your name here: ");
+                nameIn = Console.ReadLine();
+                if (string.IsNullOrEmpty(nameIn))
+                {
+                    Console.WriteLine("Empty input, please try again.");
+                }
+                else
+                {
+                    QA9 = false;
+                }
+            }
 
-            while (QA5)
+
+            while (QA7)
             {
                 Console.Write("How much stars would you like to give? ");
                 var starsNrIn = Console.ReadLine();
-                char starsNrchar = starsNrIn[0];                //string to char
-                bool starsNrTF = Char.IsDigit(starsNrchar);     //check if char is digit
+                if (string.IsNullOrEmpty(starsNrIn))
+                {
+                    Console.WriteLine("Empty input, please try again.");
+                }
+                else
+                {
+                    char starsNrchar = starsNrIn[0];                //string to char
+                    bool starsNrTF = Char.IsDigit(starsNrchar);     //check if char is digit
 
-                if (starsNrTF){
-                    var starNR = int.Parse(starsNrIn);          //char to int
-                    if (starNR > 0 && starNR <= 5)      //only 1 to 5 stars
+                    if (starsNrTF)  //if the input is a number
                     {
-                        for (int i = starNR; i > 0; i--)
+                        var starNR = int.Parse(starsNrIn);          //char to int
+                        if (starNR > 0 && starNR <= 5)      //only 1 to 5 stars
                         {
-                            starsIn += "★ ";        //create the strings with spaces in between
+                            for (int i = starNR; i > 0; i--)
+                            {
+                                starsIn += "★ ";        //create the strings with spaces in between
+                            }
+                            QA7 = false; //stop the loop
                         }
-                        QA5 = false; //stop the loop
+                        else
+                        {
+                            Console.WriteLine("You can only give 1 to 5 stars, please try again.");
+                        }
+
                     }
                     else
                     {
-                        Console.WriteLine("You can only give 1 to 5 stars, please try again.");
+                        Console.WriteLine("\'" + starsNrIn + "\' is not a number, please try again.");
                     }
-
                 }
-                else 
-                {
-                    Console.WriteLine("\'" + starsNrIn + "\' is not a number, please try again.");
-                }
-
 
             }
             Console.WriteLine("\nYour review:\nName: " + nameIn + "\nReview: " + starsIn);
