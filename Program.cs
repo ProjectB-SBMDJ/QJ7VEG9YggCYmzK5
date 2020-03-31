@@ -1,5 +1,4 @@
 ﻿using System;
-using testproject1;
 
 namespace testproject1
 {
@@ -32,14 +31,14 @@ namespace testproject1
                     case "help":
                         menuHelp();
                         break;
+                    case "menu":
+                        Menu.menu();
+                        break;
                     case "reviews":
                         ReviewMenu.MenuRev();
                         break;
                     case "reservations":
                         Reservations.ReservationSystem();
-                        break;
-                    case "menu":
-                        Menu.menu();
                         break;
                     case "exit":
                         menuRunning = false;
