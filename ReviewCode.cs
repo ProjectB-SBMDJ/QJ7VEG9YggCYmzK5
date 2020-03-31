@@ -9,9 +9,11 @@ namespace testproject1
         static bool QA1;    //for the read question loop
         static bool QA2;    //for the ask question loop
         static bool QA3;    //for the like loop
+        static bool QA4;    //for the name input loop
+        static bool QA5;    //for the review input loop
         static string readQA;
         static string nameIn;
-        
+        static string reviewIn;
 
         static Dictionary<string, string> reviewsDict = new Dictionary<string, string>(){
             {"John", "Very nice place!"},
@@ -88,10 +90,33 @@ namespace testproject1
         public static void WriteRevs()
         {
             Console.WriteLine("~~ Write an review ~~");
-            Console.Write("Write your name here: ");
-            nameIn = Console.ReadLine();
-            Console.Write("Write your review here: ");
-            string reviewIn = Console.ReadLine();
+            QA4 = true;
+            QA5 = true;
+
+            while (QA4){
+                Console.Write("Write your name here: ");
+                nameIn = Console.ReadLine();
+                if (string.IsNullOrEmpty(nameIn)) {
+                    Console.WriteLine("Empty input, please try again.");
+                }
+                else
+                {
+                    QA4 = false;
+                }
+            }
+            while (QA5)
+            {
+                Console.Write("Write your review here: ");
+                reviewIn = Console.ReadLine();
+                if (string.IsNullOrEmpty(reviewIn))
+                {
+                    Console.WriteLine("Empty input, please try again.");
+                }
+                else
+                {
+                    QA5 = false;
+                }
+            }
 
             Console.WriteLine("\nYour review:\nName: " + nameIn + "\nReview: " + reviewIn);
             reviewsDict.Add(nameIn, reviewIn);
