@@ -40,9 +40,6 @@ namespace testproject1
                     case "reservations":
                         Reservations.ReservationSystem();
                         break;
-                    case "menu":
-                        Menu.menu();
-                        break;
                     case "exit":
                         menuRunning = false;
                         break;
