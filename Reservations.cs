@@ -16,26 +16,36 @@ namespace testproject1 {
 
             bool menuRunning = true;
 
-            //IList<string> reservations = new List<string>();
-
             Random random = new Random();
 
             //FUNCTIONS
             string getName() {
                 Console.WriteLine("Please enter a name for the reservation ");
                 reservationName = Console.ReadLine();
+                while (string.IsNullOrEmpty(reservationName)) {
+                    Console.WriteLine("Empty input, Please try again");
+                    reservationName = Console.ReadLine();
+                }
                 return reservationName;
             }
 
             string getTime() {
                 Console.WriteLine("Please enter the time of the reservation (ex: 18:00)");
                 reservationTime = Console.ReadLine();
+                while (string.IsNullOrEmpty(reservationTime)) {
+                    Console.WriteLine("Empty input, Please try again");
+                    reservationTime = Console.ReadLine();
+                }
                 return reservationTime;
             }
 
             string getAmount() {
                 Console.WriteLine("For how many people do you want to reserve? ");
                 reservationAmount = Console.ReadLine();
+                while (string.IsNullOrEmpty(reservationAmount)) {
+                    Console.WriteLine("Empty input, Please try again");
+                    reservationAmount = Console.ReadLine();
+                }
                 return reservationAmount;
             }
 
@@ -69,6 +79,10 @@ namespace testproject1 {
                 viewReservation();
                 Console.WriteLine("Enter the code of the reservation to delete it: ");
                 string toDelete = Console.ReadLine();
+                while (string.IsNullOrEmpty(toDelete)) {
+                    Console.WriteLine("Empty input, Please try again");
+                    toDelete = Console.ReadLine();
+                }
                 for (int el = reservations.Count - 1; el >= 0; el--) {
                     if (reservations[el].ToString().Contains(toDelete)) {
                         reservations.RemoveAt(el);
@@ -106,6 +120,10 @@ namespace testproject1 {
                         Console.WriteLine("\n----Welcome Back To The Main Menu----");
                         Console.WriteLine("Enter \'help\' to view the options!");
                         menuRunning = false;
+                        break;
+                    case null:
+                    case "":
+                        Console.WriteLine("Empty input, please try again");
                         break;
                     default:
                         Console.WriteLine("Not a valid input, please try again.");
