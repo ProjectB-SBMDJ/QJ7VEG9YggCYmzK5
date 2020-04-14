@@ -1,21 +1,24 @@
 ﻿{
   "BEERS": [
-    "Heineken",
     {
+      "item": "Heineken",
       "number": 1,
       "price": 4
     },
-    "Amstel",
     {
+      "item": "Amstel",
       "number": 2,
       "price": 4
     },
+
     "Blue Moon",
     {
       "number": 3,
       "price": 4
     }
   ],
+
+
   "SOFT DRINKS": [
     "Lemonade",
     {

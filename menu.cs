@@ -31,7 +31,6 @@ namespace testproject1
             void DailyOffer() //Daily offers
             {
 
-
                 Console.WriteLine("*** Welcome to the Daily Offers ***");
 
                 // date today
