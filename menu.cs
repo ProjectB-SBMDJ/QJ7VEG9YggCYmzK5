@@ -107,7 +107,7 @@ namespace testproject1
                 Console.WriteLine("[23]------------Filetto al Pepe---------------€10");
                 Console.WriteLine("[24]------------Filetto al Griglia------------€12");
                 Console.WriteLine("[25]------------Filetto al Funghi-------------€13");
-                Console.WriteLine("[26]------------Scaloppina romana-------------€15");
+                Console.WriteLine("[26]------------Scaloppina Romana-------------€15");
                 Console.WriteLine("*****************SALADE*************************");
                 Console.WriteLine("[27]------------Salade Mista------------------€6");
                 Console.WriteLine("[28]------------Salade Rucola-----------------€5");
