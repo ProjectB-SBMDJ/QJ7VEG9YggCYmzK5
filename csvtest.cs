@@ -1,14 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 namespace projectb
 {
     public class csvtest
     {
-        public static object Newtonsoft { get; private set; }
+       // public static object Newtonsoft { get; private set; }
 
         public static void CSVTEST()
         {
-        
+            using(var reader = new StreamReader(@"grades.csv"))
+            {
+                List<String> ListA = new List<string>();
+                List<String> ListB = new List<string>();
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+
+                    ListA.Add(values[0]);
+                    ListB.Add(values[1]);
+                }
+                Console.WriteLine("grades.csv");
+                File.WriteAllText("grades.csv", csv);
+                
+            }
+           
 
 
             //File.ReadAllText(@"\grades.csv");
