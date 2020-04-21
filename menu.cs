@@ -1,15 +1,14 @@
 ﻿using System;
 
+using projectb;
+
 namespace testproject1
 {
+    
     public class Menu
-
     {
-
         public static void menu()
-
-        {///111
-
+        {
             // day today
             var date = DateTime.Now;
             string a = date.ToString("dddd");
@@ -23,7 +22,7 @@ namespace testproject1
                 Console.WriteLine("-------------------------------\n|     Welcome to the menu     |\n-------------------------------");
 
                 {
-                    Console.WriteLine(" [A] - Daily offers \n [B] - Special offers\n [C] - Food\n [D] - Drink");
+                    Console.WriteLine(" [A] - Daily offers \n [B] - Special offers\n [F] - Food\n [D] - Drink");
 
                     Console.Write("Choose an option: ");
                     string choiceM = Console.ReadLine();
@@ -108,72 +107,16 @@ namespace testproject1
                             }
 
                         }
-                        else if (choiceM.Equals("C", StringComparison.OrdinalIgnoreCase))
-
+                        else if (choiceM.Equals("f", StringComparison.OrdinalIgnoreCase) || choiceM.Equals("d", StringComparison.OrdinalIgnoreCase))
                         {
-                            Food();
-
-                            void Food() // Food
-                            {
-                                Console.WriteLine("*** Welcome to the Food ***");
-                                Console.WriteLine("*****************PIZZA**************************");
-                                Console.WriteLine("[14]------------Pizza funghi------------------€9");
-                                Console.WriteLine("[15]------------Pizza Margherita--------------€8");
-                                Console.WriteLine("[16]------------Pizza Salame------------------€9");
-                                Console.WriteLine("[17]------------Pizza Pollo-------------------€9");
-                                Console.WriteLine("[18]------------Pizza Tonno-------------------€9");
-                                Console.WriteLine("*****************PASTA**************************");
-                                Console.WriteLine("[19]------------Pasta Carbonara---------------€8");
-                                Console.WriteLine("[20]------------Pasta Bolognese---------------€8");
-                                Console.WriteLine("[21]------------Pasta Siciliana---------------€9");
-                                Console.WriteLine("[22]------------Pasta Pollo e funghi----------€7");
-                                Console.WriteLine("*****************MEAT***************************");
-                                Console.WriteLine("[23]------------Filetto al Pepe---------------€10");
-                                Console.WriteLine("[24]------------Filetto al Griglia------------€12");
-                                Console.WriteLine("[25]------------Filetto al Funghi-------------€13");
-                                Console.WriteLine("[26]------------Scaloppina romana-------------€15");
-                                Console.WriteLine("*****************SALADE*************************");
-                                Console.WriteLine("[27]------------Salade Mista------------------€6");
-                                Console.WriteLine("[28]------------Salade Rucola-----------------€5");
-                                Console.WriteLine("[29]------------Salade Mozzarella-------------€7");
-                                Console.WriteLine("[30]------------Salade Tonno------------------€8");
-                                Console.WriteLine("[31]------------Salade feta-------------------€7");
-                                Console.WriteLine("************************************************");
-
-
-                            }
+                            Console.WriteLine("menu f en d test test");
+                            csvtest.CSVTEST();
+                            Console.WriteLine("einde menu f en d joehoe");
+                            
+                            
 
                         }
-                        else if (choiceM.Equals("D", StringComparison.OrdinalIgnoreCase))
-
-                        {
-                            Drink();
-
-                            void Drink() //Drink
-                            {
-                                Console.WriteLine("*** Welcome to the Drinks ***");
-                                Console.WriteLine("*****************BEERS**************************");
-                                Console.WriteLine("[1]------------Heineken-----------------------€4");
-                                Console.WriteLine("[2]------------Amstel-------------------------€4");
-                                Console.WriteLine("[3]------------Blue Moon----------------------€4");
-                                Console.WriteLine("*****************SOFT DRINKS********************");
-                                Console.WriteLine("[4]------------Lemonade-----------------------€3");
-                                Console.WriteLine("[5]------------Coke---------------------------€3");
-                                Console.WriteLine("[6]------------Tonic Water--------------------€2");
-                                Console.WriteLine("[7]------------Soda Water---------------------€2");
-                                Console.WriteLine("*****************SPIRITS************************");
-                                Console.WriteLine("[8]------------Jack Daniel Whiskey------------€20");
-                                Console.WriteLine("[9]------------Smirnoff Vodka-----------------€30");
-                                Console.WriteLine("[10]------------Gordon's Gin------------------€25");
-                                Console.WriteLine("*****************CHAMPAGNE**********************");
-                                Console.WriteLine("[11]------------Moet & Chardon----------------€40");
-                                Console.WriteLine("[12]------------Bollinger---------------------€35");
-                                Console.WriteLine("[13]------------Jeio Prosecco-----------------€35");
-                                Console.WriteLine("************************************************");
-
-                            }
-
-                        }
+                        
                         else if (string.IsNullOrEmpty(choiceM))
                         {   //EMPTY INPUT
                             Console.WriteLine("Not a valid input, please try again.");

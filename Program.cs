@@ -48,13 +48,6 @@ namespace testproject1
                         break;
                 }   
             }
-            // **notes van danine zijn met sterretjes**
-            //**Hier keuze menu
-            //**Admin kan eigen eigen woord krijgen dat ze moeten invullen dat niet in het menu komt
-            //**vb: menu keuzes zijn 'rev', 'menu' & 'help'. als admin dan 'admin' intikt komt tie in zijn eigen pagina
-            //**tenzij iemand username + password werkend krijgt..?
-
-
 
             Console.WriteLine("END OF PROGRAM");
         }
