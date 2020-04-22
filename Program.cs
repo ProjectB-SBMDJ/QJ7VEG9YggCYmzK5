@@ -34,6 +34,9 @@ namespace testproject1
                     case "menu":
                         Menu.menu();
                         break;
+                    case "m":
+                        Menu.menu();
+                        break;
                     case "reviews":
                         ReviewMenu.MenuRev();
                         break;

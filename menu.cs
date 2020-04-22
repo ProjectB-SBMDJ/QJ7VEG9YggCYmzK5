@@ -109,9 +109,9 @@ namespace testproject1
                         }
                         else if (choiceM.Equals("f", StringComparison.OrdinalIgnoreCase) || choiceM.Equals("d", StringComparison.OrdinalIgnoreCase))
                         {
-                            Console.WriteLine("menu f en d test test");
+                            Console.WriteLine("menu f en d------");
                             csvtest.CSVTEST();
-                            Console.WriteLine("einde menu f en d joehoe");
+                            Console.WriteLine("einde menu f en d ------");
                             
                             
 

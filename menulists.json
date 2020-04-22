@@ -1,19 +1,19 @@
-﻿{
-  "BEERS": [
+﻿{ //object
+  "BEERS": [ //array
     {
       "item": "Heineken",
-      "number": 1,
-      "price": 4
+      "number": "1",
+      "price": "4"
     },
     {
       "item": "Amstel",
-      "number": 2,
-      "price": 4
+      "number": "2",
+      "price": "4"
     },
     {
       "item": "Blue Moon",
-      "number": 3,
-      "price": 4
+      "number": "3",
+      "price": "4"
     }
   ]
 
