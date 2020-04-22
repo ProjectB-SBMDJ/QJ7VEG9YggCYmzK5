@@ -8,7 +8,7 @@ namespace projectb
         static bool changeRun = true;
         public static void DRINKS()
         {
-            string pathstring = "/Users/danine/Documents/School/Programmas/GitHub/QJ7VEG9YggCYmzK5/Drinks.csv";
+            string pathstring = Directory.GetCurrentDirectory() + "/../../../Drinks.csv";
             var csvread = File.ReadAllText(pathstring);
             String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
          
@@ -19,7 +19,7 @@ namespace projectb
         }
         public static void FOOD()
         {
-            string pathstring = "/Users/danine/Documents/School/Programmas/GitHub/QJ7VEG9YggCYmzK5/Food.csv";
+            string pathstring = Directory.GetCurrentDirectory() + "/../../../Food.csv";
             var csvread = File.ReadAllText(pathstring);
             String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -30,7 +30,7 @@ namespace projectb
         }
         public static void SPECIALS()
         {
-            string pathstring = "/Users/danine/Documents/School/Programmas/GitHub/QJ7VEG9YggCYmzK5/Specials.csv";
+            string pathstring = Directory.GetCurrentDirectory() + "/../../../Specials.csv";
             var csvread = File.ReadAllText(pathstring);
             String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
 
