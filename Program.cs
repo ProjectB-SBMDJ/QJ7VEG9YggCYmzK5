@@ -51,7 +51,6 @@ namespace testproject1
                         break;
                 }   
             }
-
             Console.WriteLine("END OF PROGRAM");
         }
     }
