@@ -52,6 +52,7 @@ namespace testproject1
                 }
                 else if (choiceM.Equals("111", StringComparison.OrdinalIgnoreCase))
                 {
+                    //Dit is nog hier, maar dit moet naar het admin dingetje verplaats worden zodra hij klaar is
                     chosen = false;
                     Console.WriteLine("*aanpassen*");
                     csvcalls.CHANGEask();

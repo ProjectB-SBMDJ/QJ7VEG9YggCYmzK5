@@ -50,6 +50,7 @@ namespace projectb
                 {
                     changeRun = false;
                     DRINKS();
+                    Console.WriteLine("hierna aanpassen en kiezen welke rij, column en artikel het moet worden...");
                     //CHANGEcsv();
                 }
                 else if (changeIN.Equals("Food", StringComparison.OrdinalIgnoreCase))
@@ -75,6 +76,7 @@ namespace projectb
 
         public static void CHANGEcsv()
         {
+            //>>>>>> NOG TESTEN DEZE HIERONDER <<<<<<
             // Chilkat.Csv csv = new Chilkat.Csv();
 
             //  Prior to loading the CSV file, indicate that the 1st row
