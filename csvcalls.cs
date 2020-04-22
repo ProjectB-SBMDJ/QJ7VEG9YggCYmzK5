@@ -51,7 +51,7 @@ namespace projectb
                     changeRun = false;
                     DRINKS();
                     Console.WriteLine("hierna aanpassen en kiezen welke rij, column en artikel het moet worden...");
-                    //CHANGEcsv();
+                    CHANGEcsv();
                 }
                 else if (changeIN.Equals("Food", StringComparison.OrdinalIgnoreCase))
                 {
@@ -76,8 +76,19 @@ namespace projectb
 
         public static void CHANGEcsv()
         {
+            changeRun = true;
+            string nr1 = Console.ReadLine();
+            string nr2 = Console.ReadLine();
+            string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/Drinks.csv";
+            using(StreamWriter sw = File.AppendText(pathstring))
+            {
+                sw.WriteLine("\n" + nr1 + ";" + nr2 + "???" + "???");
+                //hier iets zodat het erop lijkt??????
+            }
+            DRINKS();
+
             //>>>>>> NOG TESTEN DEZE HIERONDER <<<<<<
-            // Chilkat.Csv csv = new Chilkat.Csv();
+            //Chilkat.Csv csv = new Chilkat.Csv();
 
             //  Prior to loading the CSV file, indicate that the 1st row
             //  should be treated as column names:
