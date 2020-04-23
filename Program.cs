@@ -1,4 +1,5 @@
 ﻿using System;
+using projectb;
 
 namespace testproject1
 {
@@ -6,7 +7,7 @@ namespace testproject1
     {
         static void Main(string[] args)
         {
-            bool menuRunning = true;
+            bool menuRunning = false;
             string menuSelection;
 
             void readMenuInput() {
@@ -22,35 +23,56 @@ namespace testproject1
                 );
             }
 
-            Console.WriteLine("Welcome to the restaurant's console application");
-            Console.WriteLine("Enter \'help\' to view the options!");
+            void startProgram() {
+                Console.WriteLine("Welcome to the restaurant's console application");
+                Console.WriteLine("Enter \'help\' to view the options!");
 
-            while (menuRunning) {
-                readMenuInput();
-                switch (menuSelection.ToLower()) {
-                    case "help":
-                        menuHelp();
-                        break;
-                    case "menu":
-                        Menu.menu();
-                        break;
-                    case "m":
-                        Menu.menu();
-                        break;
-                    case "reviews":
-                        ReviewMenu.MenuRev();
-                        break;
-                    case "reservations":
-                        Reservations.ReservationSystem();
-                        break;
-                    case "exit":
-                        menuRunning = false;
-                        break;
-                    default:
-                        Console.WriteLine("Not a valid input, please try again.");
-                        break;
-                }   
+                while (menuRunning) {
+                    readMenuInput();
+                    switch (menuSelection.ToLower()) {
+                        case "help":
+                            menuHelp();
+                            break;
+                        case "menu":
+                            Menu.menu();
+                            break;
+                        case "reviews":
+                            ReviewMenu.MenuRev();
+                            break;
+                        case "reservations":
+                            Reservations.ReservationSystem();
+                            break;
+                        case "exit":
+                            menuRunning = false;
+                            break;
+                        default:
+                            Console.WriteLine("Not a valid input, please try again.");
+                            break;
+                    }
+                }
             }
+
+            Console.WriteLine("Enter '1' if you are a guest.");
+            Console.WriteLine("Enter '2' if you are an admin.");
+            var startupPath = Convert.ToInt32(Console.ReadLine());
+
+            if (startupPath == 1) {
+                menuRunning = true;
+                startProgram();
+            } else if (startupPath == 2) {
+                Console.WriteLine("Username: ");
+                string currentUser = Console.ReadLine();
+                Console.WriteLine("Password: ");
+                string currentPass = Console.ReadLine();
+                AdminSystem.CheckUserDetails(currentUser, currentPass);
+                if (AdminSystem.adminLoggedin == true) {
+                    menuRunning = true;
+                    startProgram();
+                }
+            } else {
+                Console.WriteLine("You did not enter valid option");
+            }
+
             Console.WriteLine("END OF PROGRAM");
         }
     }
