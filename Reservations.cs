@@ -90,6 +90,7 @@ namespace testproject1 {
                     Console.WriteLine("Add Error : " + ex.Message.ToString());
                 }
 
+                Console.Clear();
                 Console.WriteLine("Reservation Saved... Your reservation code is: " + code);
                 Console.WriteLine("What would you like to do now? (enter \'help\' to see options)");
             }
@@ -107,7 +108,6 @@ namespace testproject1 {
                             foreach (var item in reservationsArray) {
                                 Console.WriteLine("Code: " + item["code"].ToString() + "    Name: " + item["name"].ToString() + "   Time: " + item["time"].ToString() + "   Amount: " + item["amount"].ToString());
                             }
-
                         }
                     }
                 }
@@ -125,8 +125,9 @@ namespace testproject1 {
                 try {
                     var jObject = JObject.Parse(json);
                     JArray reservationsArray = (JArray)jObject["reservations"];
-                    Console.Write("\nEnter Reservation Code to Delete Reservation: ");
+                    Console.Write("Enter Reservation Code to Delete Reservation ([E] to cancel): ");
                     var readResCode = Console.ReadLine();
+                    Console.Clear();
 
                     if (int.TryParse(readResCode, out _)) {
                         var resCode = Convert.ToInt32(readResCode);
@@ -139,11 +140,16 @@ namespace testproject1 {
                             string output = Newtonsoft.Json.JsonConvert.SerializeObject(jObject, Newtonsoft.Json.Formatting.Indented);
                             File.WriteAllText(reservationsDatabase, output);
                             Console.WriteLine("Reservation has been deleted.");
+                            Console.WriteLine("What would you like to do now? (enter \'help\' to see options)");
                         }
                         else {
                             Console.WriteLine("Reservation not found, please try again");
                             deleteReservation();
                         }
+                    } else if (readResCode == "e") {
+                        Console.Clear();
+                        ReservationSystem();
+
                     } else {
                         Console.Write("Invalid Reservation Code, Try Again!\n");
                         deleteReservation();
@@ -155,12 +161,86 @@ namespace testproject1 {
                 }
             }
 
+            void updateReservation() {
+                string json = File.ReadAllText(reservationsDatabase);
+
+                try {
+                    var jObject = JObject.Parse(json);
+                    JArray reservationsArray = (JArray)jObject["reservations"];
+                    Console.WriteLine("---------- ALL RESERVATIONS ----------");
+                    if (reservationsArray != null) {
+                        foreach (var item in reservationsArray) {
+                            Console.WriteLine("Code: " + item["code"].ToString() + "        Name: " + item["name"].ToString() + "       Time: " + item["time"].ToString() + "       Amount: " + item["amount"].ToString());
+                        }
+
+                    }
+                    Console.Write("\nEnter Reservation Code to update reservation ([E] to cancel): ");
+                    var readResCode = Console.ReadLine();
+                    Console.Clear();
+
+                    if (int.TryParse(readResCode, out _)) {
+                        var resCode = Convert.ToInt32(readResCode);
+                        if (resCode > 0 && json.ToString().Contains(resCode.ToString())) {
+                            Console.Write("What would you like to change? (name, amount, time): ");
+                            var toChange = Console.ReadLine();
+                            Console.Clear();
+                            switch (toChange) {
+                                case "name":
+                                    Console.Write("Enter new name for reservation: ");
+                                    var newName = Convert.ToString(Console.ReadLine());
+                                    foreach (var reservation in reservationsArray.Where(obj => obj["code"].Value<int>() == resCode)) {
+                                        reservation["name"] = !string.IsNullOrEmpty(newName) ? newName : "";
+                                    }
+                                    break;
+                                case "amount":
+                                    Console.Write("Enter new amount of guests for reservation: ");
+                                    var newAmount = Convert.ToString(Console.ReadLine());
+                                    foreach (var reservation in reservationsArray.Where(obj => obj["code"].Value<int>() == resCode)) {
+                                        reservation["amount"] = !string.IsNullOrEmpty(newAmount) ? newAmount : "";
+                                    }
+                                    break;
+                                case "time":
+                                    Console.Write("Enter new time for reservation: ");
+                                    var newTime = Convert.ToString(Console.ReadLine());
+                                    foreach (var reservation in reservationsArray.Where(obj => obj["code"].Value<int>() == resCode)) {
+                                        reservation["time"] = !string.IsNullOrEmpty(newTime) ? newTime : "";
+                                    }
+                                    break;
+                            }
+                            Console.Clear();
+                            Console.WriteLine("Reservation updated...");
+                            Console.WriteLine("What would you like to do now? (enter \'help\' to see options)");
+
+
+                            jObject["reservations"] = reservationsArray;
+                            string output = Newtonsoft.Json.JsonConvert.SerializeObject(jObject, Newtonsoft.Json.Formatting.Indented);
+                            File.WriteAllText(reservationsDatabase, output);
+                        }
+                        else {
+                            Console.Write("Reservation not found, please try again");
+                            updateReservation();
+                        }
+                    } else if (readResCode == "e"){
+                        Console.Clear();
+                        ReservationSystem();
+                    } else {
+                        Console.Write("Invalid Reservation Code, Try Again!\n");
+                        updateReservation();
+                    }
+                }
+                catch (Exception ex) {
+
+                    Console.WriteLine("Update Error : " + ex.Message.ToString());
+                }
+            }
+        
+
             //Prints out the options for the reservation menu. If admin is logged in print full menu options.
             //else print guest menu options.
             void menuHelp() {
-                Console.WriteLine("\n----Reservation Menu----");
+                Console.WriteLine("----Reservation Menu----");
                 if (AdminSystem.adminLoggedin == true) {
-                    Console.WriteLine(" [M] - Make Reservation\n [V] - View Reservations\n [D] - Delete Reservations\n [E] - Exit and back to the main page\n");
+                    Console.WriteLine(" [M] - Make Reservation\n [V] - View Reservations\n [U] - Update/Change Reservations\n [D] - Delete Reservations\n [E] - Exit and back to the main page\n");
                 }
                 else {
                     Console.WriteLine(" [M] - Make Reservation\n [E] - Exit and back to the main page\n");
@@ -168,7 +248,7 @@ namespace testproject1 {
             }
 
             //Reservation Menu
-            Console.WriteLine("\n----Welcome to the Reservation System----");
+            Console.WriteLine("----Welcome to the Reservation System----");
             Console.WriteLine("Enter \'help\' to see the options");
 
             while (menuRunning) {
@@ -176,19 +256,28 @@ namespace testproject1 {
                 if (AdminSystem.adminLoggedin == true) {
                     switch (menuSelection.ToLower()) {
                         case "m":
+                            Console.Clear();
                             makeReservation();
                             break;
                         case "v":
+                            Console.Clear();
                             viewReservation();
                             break;
                         case "d":
+                            Console.Clear();
                             deleteReservation();
                             break;
+                        case "u":
+                            Console.Clear();
+                            updateReservation();
+                            break;
                         case "help":
+                            Console.Clear();
                             menuHelp();
                             break;
                         case "e":
-                            Console.WriteLine("\n----Welcome Back To The Main Menu----");
+                            Console.Clear();
+                            Console.WriteLine("----Welcome Back To The Main Menu----");
                             Console.WriteLine("Enter \'help\' to view the options!");
                             menuRunning = false;
                             break;

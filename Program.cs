@@ -31,18 +31,23 @@ namespace testproject1
                     readMenuInput();
                     switch (menuSelection.ToLower()) {
                         case "help":
+                            Console.Clear();
                             menuHelp();
                             break;
                         case "menu":
+                            Console.Clear();
                             Menu.menu();
                             break;
                         case "reviews":
+                            Console.Clear();
                             ReviewMenu.MenuRev();
                             break;
                         case "reservations":
+                            Console.Clear();
                             Reservations.ReservationSystem();
                             break;
                         case "exit":
+                            Console.Clear();
                             menuRunning = false;
                             break;
                         default:
@@ -55,18 +60,20 @@ namespace testproject1
             Console.WriteLine("Enter '1' if you are a guest.");
             Console.WriteLine("Enter '2' if you are an admin.");
             var startupPath = Convert.ToInt32(Console.ReadLine());
+            Console.Clear();
 
             if (startupPath == 1) {
                 menuRunning = true;
                 startProgram();
             } else if (startupPath == 2) {
-                Console.WriteLine("Username: ");
+                Console.Write("Username: ");
                 string currentUser = Console.ReadLine();
-                Console.WriteLine("Password: ");
+                Console.Write("Password: ");
                 string currentPass = Console.ReadLine();
                 AdminSystem.CheckUserDetails(currentUser, currentPass);
                 if (AdminSystem.adminLoggedin == true) {
                     menuRunning = true;
+                    Console.Clear();
                     startProgram();
                 }
             } else {
