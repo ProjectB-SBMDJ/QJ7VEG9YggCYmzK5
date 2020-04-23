@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace projectb
 {
@@ -41,6 +44,7 @@ namespace projectb
         }
         public static void CHANGEask()
         {
+            changeRun = true;
             Console.WriteLine("Which file would you like to read and change?\n" +
                 "Choose from: Drinks, Food, Specials or Daily");
             string changeIN = Console.ReadLine();
@@ -76,13 +80,23 @@ namespace projectb
 
         public static void CHANGEcsv()
         {
-            changeRun = true;
+            Console.WriteLine("NR??: ");
+            string nr4 = Console.ReadLine();
+            Console.WriteLine("NR11: ");
             string nr1 = Console.ReadLine();
+            Console.WriteLine("NR22: ");
             string nr2 = Console.ReadLine();
+            Console.WriteLine("NR33: ");
+            string nr3 = Console.ReadLine();
+            string eind = "\""+ nr4 + " \";\"" + nr1 + ":  \"" + ";\"" + nr2 + " \";\"" + nr3 + " \"";
+
+
             string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/Drinks.csv";
-            using(StreamWriter sw = File.AppendText(pathstring))
+            var csvread = File.ReadAllText(pathstring);
+            using (StreamWriter sw = File.AppendText(pathstring))
             {
-                sw.WriteLine("\n" + nr1 + ";" + nr2 + "???" + "???");
+
+                sw.WriteLine(eind);
                 //hier iets zodat het erop lijkt??????
             }
             DRINKS();
@@ -110,6 +124,20 @@ namespace projectb
             //  Save the CSV to a file:
             //   success = csv.SaveFile("out.csv");
             //hier dan dezelfde weer als savefile?
+
+            //Delete
+            String GetAddress(String searchName)
+            {
+                var strLines = File.ReadLines(pathstring);
+                foreach(var line in strLines)
+                {
+                    if (line.Split(',')[1].Equals(searchName))
+                        return line.Split(',')[2];
+                }
+                return "";
+            }
+
+            String peterAddress = GetAddress("Heineken");
         }
 
     }
