@@ -357,32 +357,35 @@ namespace testproject1 {
                             break;
                         case null:
                         case "":
-                            Console.WriteLine("Empty input, please try again");
+                            Console.Write("Empty input, please try again: ");
                             break;
                         default:
-                            Console.WriteLine("Not a valid input, please try again.");
+                            Console.Write("Not a valid input, please try again: ");
                             break;
                     }
                 }
                 else { 
                     switch (menuSelection.ToLower()) {
                         case "m":
+                            Console.Clear();
                             makeReservation();
                             break;
                         case "help":
+                            Console.Clear();
                             menuHelp();
                             break;
                         case "e":
-                            Console.WriteLine("\n----Welcome Back To The Main Menu----");
+                            Console.Clear();
+                            Console.WriteLine("----Welcome Back To The Main Menu----");
                             Console.WriteLine("Enter \'help\' to view the options!");
                             menuRunning = false;
                             break;
                         case null:
                         case "":
-                            Console.WriteLine("Empty input, please try again");
+                            Console.Write("Empty input, please try again: ");
                             break;
                         default:
-                            Console.WriteLine("Not a valid input, please try again.");
+                            Console.Write("Not a valid input, please try again: ");
                             break;
                     }
                 }
