@@ -57,8 +57,8 @@ namespace testproject1
                 }
             }
 
-            Console.WriteLine("Enter '1' if you are a guest.");
-            Console.WriteLine("Enter '2' if you are an admin.");
+            Console.Write("Enter '1' if you are a guest,");
+            Console.Write(" Enter '2' if you are an employee: ");
             var startupPath = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
 
