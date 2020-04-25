@@ -13,6 +13,7 @@ namespace testproject1 {
 
 //----------VARIABLES-----------------------------------------------------------------------------------------------
             string reservationName;
+            string reservationDate;
             string reservationTime;
             string reservationAmount;
             string menuSelection;
@@ -36,13 +37,29 @@ namespace testproject1 {
                 return reservationName;
             }
 
+            //Get date of reservation
+            string getDate() {
+                if (resInput != "c") {
+                    Console.Write("Please enter the date of this reservation (DD-MM-YYYY): ");
+                    reservationDate = Console.ReadLine();
+                    while (string.IsNullOrEmpty(reservationDate)) {
+                        Console.Write("Empty input, please try again: ");
+                        reservationDate = Console.ReadLine();
+                    }
+                } else {
+                    reservationDate = "_";
+                }
+                Console.Clear();
+                return reservationDate;
+            }
+
             //Get time for reservation.
             string getTime() {
                 if (resInput != "c") {
                     Console.Write("Please enter the time of the reservation (ex: 18:00): ");
                     reservationTime = Console.ReadLine();
                     while (string.IsNullOrEmpty(reservationTime)) {
-                        Console.Write("Empty input, Please try again: ");
+                        Console.Write("Empty input, please try again: ");
                         reservationTime = Console.ReadLine();
                     }
                 } else {
@@ -81,13 +98,14 @@ namespace testproject1 {
 
             //Makes a reservation and saves it to the json file reservations.json
             void makeReservation() {
-                var name = getName();                
+                var name = getName();
+                var date = getDate();
                 var time = getTime();
                 var amount = getAmount();
                 var code = generateCode();
 
                 if (resInput != "c") {
-                    var newReservation = "{ 'name': '" + name + "', 'time': '" + time + "', 'amount': " + amount + ", 'code': " + code + "}";
+                    var newReservation = "{ 'name': '" + name + "', 'date': '" + date + "', 'time': '" + time + "', 'amount': " + amount + ", 'code': " + code + "}";
                     try {
                         var json = File.ReadAllText(reservationsDatabase);
                         var jsonObj = JObject.Parse(json);
@@ -126,7 +144,7 @@ namespace testproject1 {
                         JArray reservationsArray = (JArray)jObject["reservations"];
                         if (reservationsArray != null) {
                             foreach (var item in reservationsArray) {
-                                Console.WriteLine("Code: " + item["code"].ToString() + "    Name: " + item["name"].ToString() + "   Time: " + item["time"].ToString() + "   Amount: " + item["amount"].ToString());
+                                Console.WriteLine("Code: " + item["code"].ToString() + "    Name: " + item["name"].ToString() + "   Date: " + item["date"].ToString() + "   Time: " + item["time"].ToString() + "   Amount: " + item["amount"].ToString()); ;
                             }
                         }
                     }
@@ -148,7 +166,7 @@ namespace testproject1 {
                     Console.WriteLine("---------- ALL RESERVATIONS ----------");
                     if (reservationsArray != null) {
                         foreach (var item in reservationsArray) {
-                            Console.WriteLine("Code: " + item["code"].ToString() + "        Name: " + item["name"].ToString() + "       Time: " + item["time"].ToString() + "       Amount: " + item["amount"].ToString());
+                            Console.WriteLine("Code: " + item["code"].ToString() + "    Name: " + item["name"].ToString() + "   Date: " + item["date"].ToString() + "   Time: " + item["time"].ToString() + "   Amount: " + item["amount"].ToString()); ;
                         }
                     }
                     Console.Write("\nEnter Reservation Code to Delete Reservation ([C] to cancel): ");
@@ -206,7 +224,7 @@ namespace testproject1 {
                     Console.WriteLine("---------- ALL RESERVATIONS ----------");
                     if (reservationsArray != null) {
                         foreach (var item in reservationsArray) {
-                            Console.WriteLine("Code: " + item["code"].ToString() + "        Name: " + item["name"].ToString() + "       Time: " + item["time"].ToString() + "       Amount: " + item["amount"].ToString());
+                            Console.WriteLine("Code: " + item["code"].ToString() + "        Name: " + item["name"].ToString());
                         }
                     }
                     Console.Write("\nEnter Reservation Code to update reservation ([C] to cancel): ");
@@ -217,7 +235,15 @@ namespace testproject1 {
                         if (int.TryParse(readResCode, out _)) {
                             var resCode = Convert.ToInt32(readResCode);
                             if (resCode > 0 && json.ToString().Contains(resCode.ToString())) {
-                                Console.Write("What would you like to change? (name, amount, time): ");
+                                Console.WriteLine("---------- ALL RESERVATIONS ----------");
+                                if (reservationsArray != null) {
+                                    foreach (var item in reservationsArray) {
+                                        if (readResCode == item["code"].ToString()) {
+                                            Console.WriteLine("Name: " + item["name"].ToString() + "      Date: " + item["date"].ToString() + "       Time: " + item["time"].ToString() + "       Amount: " + item["amount"].ToString());
+                                        }
+                                    }
+                                }
+                                Console.Write("\nWhat would you like to change? (name, amount, time, date): ");
                                 var toChange = Console.ReadLine();
                                 Console.Clear();
                                 switch (toChange) {
@@ -233,6 +259,13 @@ namespace testproject1 {
                                         var newAmount = Convert.ToString(Console.ReadLine());
                                         foreach (var reservation in reservationsArray.Where(obj => obj["code"].Value<int>() == resCode)) {
                                             reservation["amount"] = !string.IsNullOrEmpty(newAmount) ? newAmount : "";
+                                        }
+                                        break;
+                                    case "date":
+                                        Console.Write("Enter new date for reservation (DD-MM-YYYY): ");
+                                        var newDate = Convert.ToString(Console.ReadLine());
+                                        foreach (var reservation in reservationsArray.Where(obj => obj["code"].Value<int>() == resCode)) {
+                                            reservation["date"] = !string.IsNullOrEmpty(newDate) ? newDate : "";
                                         }
                                         break;
                                     case "time":
