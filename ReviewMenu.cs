@@ -18,7 +18,7 @@ namespace testproject1 {
             }
 
             Console.WriteLine("\n----Welcome to the Reviews Page----");
-            Console.WriteLine("Enter \'help\' to see the options");
+            menuHelp();
             while (menuRunning) {
                 readMenuInput();
                 switch (menuSelection.ToLower()) {

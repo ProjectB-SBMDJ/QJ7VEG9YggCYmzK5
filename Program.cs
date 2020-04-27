@@ -1,4 +1,5 @@
 ﻿using System;
+using projectb;
 
 namespace testproject1
 {
@@ -6,7 +7,7 @@ namespace testproject1
     {
         static void Main(string[] args)
         {
-            bool menuRunning = true;
+            bool menuRunning = false;
             string menuSelection;
 
             void readMenuInput() {
@@ -22,39 +23,62 @@ namespace testproject1
                 );
             }
 
-            Console.WriteLine("Welcome to the restaurant's console application");
-            Console.WriteLine("Enter \'help\' to view the options!");
+            void startProgram() {
+                Console.WriteLine("Welcome to the restaurant's console application");
+                Console.WriteLine("Enter \'help\' to view the options!");
 
-            while (menuRunning) {
-                readMenuInput();
-                switch (menuSelection.ToLower()) {
-                    case "help":
-                        menuHelp();
-                        break;
-                    case "menu":
-                        Menu.menu();
-                        break;
-                    case "reviews":
-                        ReviewMenu.MenuRev();
-                        break;
-                    case "reservations":
-                        Reservations.ReservationSystem();
-                        break;
-                    case "exit":
-                        menuRunning = false;
-                        break;
-                    default:
-                        Console.WriteLine("Not a valid input, please try again.");
-                        break;
-                }   
+                while (menuRunning) {
+                    readMenuInput();
+                    switch (menuSelection.ToLower()) {
+                        case "help":
+                            Console.Clear();
+                            menuHelp();
+                            break;
+                        case "menu":
+                            Console.Clear();
+                            Menu.menu();
+                            break;
+                        case "reviews":
+                            Console.Clear();
+                            ReviewMenu.MenuRev();
+                            break;
+                        case "reservations":
+                            Console.Clear();
+                            Reservations.ReservationSystem();
+                            break;
+                        case "exit":
+                            Console.Clear();
+                            menuRunning = false;
+                            break;
+                        default:
+                            Console.WriteLine("Not a valid input, please try again.");
+                            break;
+                    }
+                }
             }
-            // **notes van danine zijn met sterretjes**
-            //**Hier keuze menu
-            //**Admin kan eigen eigen woord krijgen dat ze moeten invullen dat niet in het menu komt
-            //**vb: menu keuzes zijn 'rev', 'menu' & 'help'. als admin dan 'admin' intikt komt tie in zijn eigen pagina
-            //**tenzij iemand username + password werkend krijgt..?
 
+            Console.Write("Enter '1' if you are a guest,");
+            Console.Write(" Enter '2' if you are an employee: ");
+            var startupPath = Convert.ToInt32(Console.ReadLine());
+            Console.Clear();
 
+            if (startupPath == 1) {
+                menuRunning = true;
+                startProgram();
+            } else if (startupPath == 2) {
+                Console.Write("Username: ");
+                string currentUser = Console.ReadLine();
+                Console.Write("Password: ");
+                string currentPass = Console.ReadLine();
+                AdminSystem.CheckUserDetails(currentUser, currentPass);
+                if (AdminSystem.adminLoggedin == true) {
+                    menuRunning = true;
+                    Console.Clear();
+                    startProgram();
+                }
+            } else {
+                Console.WriteLine("You did not enter valid option");
+            }
 
             Console.WriteLine("END OF PROGRAM");
         }
