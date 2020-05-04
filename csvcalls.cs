@@ -55,7 +55,7 @@ namespace projectb
                     changeRun = false;
                     DRINKS();
                     Console.WriteLine("hierna aanpassen en kiezen welke rij, column en artikel het moet worden...");
-                    CHANGEcsv();
+                    ADDcsv();
                 }
                 else if (changeIN.Equals("Food", StringComparison.OrdinalIgnoreCase))
                 {
