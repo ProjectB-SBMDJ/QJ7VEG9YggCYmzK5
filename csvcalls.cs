@@ -78,7 +78,7 @@ namespace projectb
         }
 
 
-        public static void CHANGEcsv()
+        public static void ADDcsv()
         {
             Console.WriteLine("NR??: ");
             string nr4 = Console.ReadLine();
@@ -125,19 +125,6 @@ namespace projectb
             //   success = csv.SaveFile("out.csv");
             //hier dan dezelfde weer als savefile?
 
-            //Delete
-            String GetAddress(String searchName)
-            {
-                var strLines = File.ReadLines(pathstring);
-                foreach(var line in strLines)
-                {
-                    if (line.Split(',')[1].Equals(searchName))
-                        return line.Split(',')[2];
-                }
-                return "";
-            }
-
-            String peterAddress = GetAddress("Heineken");
         }
 
     }
