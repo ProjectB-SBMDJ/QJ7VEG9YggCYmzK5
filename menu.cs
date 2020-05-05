@@ -13,7 +13,7 @@ namespace testproject1
             // day today
             var date = DateTime.Now;
             string a = date.ToString("dddd");
-            Console.WriteLine("-------------------------------\n|     Welcome to the menu     |\n-------------------------------");
+            Console.WriteLine("-----------------------`    |\n-------------------------------");
             Console.WriteLine(" [DO] - Daily offers \n [S] - Special offers\n [F] - Food\n [D] - Drink");
           
             while (chosen)
@@ -95,46 +95,46 @@ namespace testproject1
 
             Console.WriteLine("\n----Welcome to the Menu Page----");
             Console.WriteLine("Enter \'help\' to see the options");
-            while (menuRunning)
-            {
-                readMenuInput();
-
-                switch (menuSelection.ToLower())
-                {
-                    case "a":
-                        DailyOffer();
-                        Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
-                        break;
-                    case "b":
-                        SpecialOffer();
-                        Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
-                        break;
-                    case "c":
-                        Food();
-                        Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
-                        break;
-                    case "d":
-                        Drink();
-                        Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
-                        break;
-                    case "help":
-                        Menu();
-                        break;
-                    case "e":
-                        Console.WriteLine("\n----Welcome Back To The Main Menu----");
-                        Console.WriteLine("Enter \'help\' to view the options!");
-                        menuRunning = false;
-                        break;
-                    case "":        //empty input
-                    case null:      // is invalid
-                        Console.WriteLine("Empty input, please try again.");
-                        break;
-                    default:
-                        Console.WriteLine("Not a valid input, please try again.");
-                        break;
-
-                }
-            }
+      //     while (menuRunning)
+      //      {
+      //          readMenuInput();
+      //
+      //          switch (menuSelection.ToLower())
+      //         {
+      //              case "a":
+      //                  DailyOffer();
+      //                  Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
+      //                  break;
+      //             case "b":
+      //                 SpecialOffer();
+      //                 Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
+      //                  break;
+      //              case "c":
+      //                  Food();
+      //                  Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
+      //                  break;
+      //              case "d":
+      //                 Drink();
+      //                 Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
+      //                  break;
+      //              case "help":
+      //                  Menu();
+      //                  break;
+      //              case "e":
+      //                  Console.WriteLine("\n----Welcome Back To The Main Menu----");
+      //                  Console.WriteLine("Enter \'help\' to view the options!");
+      //                  menuRunning = false;
+      //                break;
+      //              case "":        //empty input
+      //              case null:      // is invalid
+      //                  Console.WriteLine("Empty input, please try again.");
+      //                  break;
+      //              default:
+      //                 Console.WriteLine("Not a valid input, please try again.");
+      //                  break;
+      //
+      //          }
+      //      }
         }
     }
 

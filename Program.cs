@@ -5,6 +5,8 @@ namespace testproject1
 {
     class Program
     {
+        static bool number = true;
+        static string beforeStart;
         static void Main(string[] args)
         {
             bool menuRunning = false;
@@ -57,9 +59,31 @@ namespace testproject1
                 }
             }
 
-            Console.Write("Enter '1' if you are a guest,");
-            Console.Write(" Enter '2' if you are an employee: ");
-            var startupPath = Convert.ToInt32(Console.ReadLine());
+            
+           
+            number = true;
+            //for the loop below
+            while (number)
+            {
+                Console.Write("Enter '1' if you are a guest,");
+                Console.Write(" Enter '2' if you are an employee: ");
+                beforeStart = Console.ReadLine();
+                if (beforeStart.Equals("1", StringComparison.OrdinalIgnoreCase))
+                {
+                    number = false;
+                    
+                }
+                else if (beforeStart.Equals("2", StringComparison.OrdinalIgnoreCase))
+                {
+                    number = false;
+                }
+                else
+                {
+                    Console.WriteLine("Not a valid input, please try again.");
+                }
+            }
+
+            var startupPath = Convert.ToInt32(beforeStart);
             Console.Clear();
 
             if (startupPath == 1) {
