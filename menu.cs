@@ -4,7 +4,7 @@ using projectb;
 
 namespace testproject1
 {
-    
+
     public class Menu
     {
         static bool chosen = true;
@@ -50,13 +50,6 @@ namespace testproject1
                     Console.WriteLine("*** Welcome to the Drinks ***");
                     csvcalls.DRINKS(); //get to the csv file drinks
                 }
-                else if (choiceM.Equals("111", StringComparison.OrdinalIgnoreCase))
-                {
-                    //Dit is nog hier, maar dit moet naar het admin dingetje verplaats worden zodra hij klaar is
-                    chosen = false;
-                    Console.WriteLine("*aanpassen*");
-                    csvcalls.CHANGEask();
-                }
                 else if (string.IsNullOrEmpty(choiceM))
                 {   //EMPTY INPUT
                     Console.WriteLine("Not a valid input, please try again.");
@@ -66,21 +59,21 @@ namespace testproject1
                     Console.WriteLine("Not a valid input, please try again.");
                 }
             }
-            backgo();  
+            backgo();
         }
 
         public static void backgo()
         {
             chosen = true;
 
-            Console.WriteLine("\nDo you want to go back?[yes/no]");
+            Console.WriteLine("\nDo you want to go back to the main menu?[yes/no]");
             string goback = Console.ReadLine();
 
-            if (goback.Equals("yes", StringComparison.OrdinalIgnoreCase))
+            if (goback.Equals("no", StringComparison.OrdinalIgnoreCase))
             {
                 menu();
             }
-            else if (goback.Equals("no", StringComparison.OrdinalIgnoreCase))
+            else if (goback.Equals("yes", StringComparison.OrdinalIgnoreCase))
             {
                 Console.Write("\nWhat do you want to do?");
                 Console.WriteLine("(Enter \'help\' to view the options)");
