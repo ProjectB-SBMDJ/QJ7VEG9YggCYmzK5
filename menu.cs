@@ -23,13 +23,10 @@ namespace testproject1
                 if (choiceM.Equals("do", StringComparison.OrdinalIgnoreCase))
                 {
                     chosen = false;
-                    DailyOffer();
-                    void DailyOffer() //Daily offers
-                    {
-                        Console.WriteLine("*** Welcome to the Daily Offers ***");
-                        // date today
-                        Console.WriteLine("     " + date.ToLongDateString());
-                    }
+                    Console.WriteLine("*** Welcome to the Daily Offers ***");
+                    Console.WriteLine("     " + date.ToLongDateString());
+                    csvcalls.DAILYOFFERS(); //get to the csv file DAILYOFFERS
+
                 }
                 else if (choiceM.Equals("s", StringComparison.OrdinalIgnoreCase))
                 {

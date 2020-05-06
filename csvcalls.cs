@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace projectb
@@ -6,6 +7,9 @@ namespace projectb
     public class csvcalls
     {
         static bool changeRun = true;
+        private static string pathstring;
+        private static IEnumerable<object> file;
+
         public static void DRINKS()
         {
             string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/Drinks.csv";
@@ -17,6 +21,59 @@ namespace projectb
                Console.Write(i);
             }
         }
+
+        public static void DAILYOFFERS()
+        {
+            var date = DateTime.Now;
+            string a = date.ToString("dddd");
+
+            if (a.Equals("Monday", StringComparison.OrdinalIgnoreCase))
+            {
+                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailyMon.csv";
+                var csvread = File.ReadAllText(pathstring);
+                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var i in file)
+                {
+                    Console.Write(i);
+                }
+            }
+
+            else if (a.Equals("Tuesday", StringComparison.OrdinalIgnoreCase))
+            {
+                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailyDi.csv";
+                var csvread = File.ReadAllText(pathstring);
+                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var i in file)
+                {
+                    Console.Write(i);
+                }
+            }
+
+            else if (a.Equals("Wednesday", StringComparison.OrdinalIgnoreCase))
+            {
+                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailyWo.csv";
+                var csvread = File.ReadAllText(pathstring);
+                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var i in file)
+                {
+                    Console.Write(i);
+                }
+            }
+
+            else if (a.Equals("Thursday", StringComparison.OrdinalIgnoreCase))
+            {
+                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailyDo.csv";
+                var csvread = File.ReadAllText(pathstring);
+                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var i in file)
+                {
+                    Console.Write(i);
+                }
+            }
+
+
+        }
+
         public static void FOOD()
         {
             string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/Food.csv";
