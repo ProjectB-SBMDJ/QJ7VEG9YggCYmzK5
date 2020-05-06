@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
+
 namespace projectb
 {
     public class csvcalls
@@ -79,6 +80,7 @@ namespace projectb
             string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/Food.csv";
             var csvread = File.ReadAllText(pathstring);
             String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
+           
 
             foreach (var i in file)
             {
