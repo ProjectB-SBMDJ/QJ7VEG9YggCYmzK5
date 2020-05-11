@@ -1,14 +1,16 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+
 
 namespace projectb
 {
     public class csvcalls
     {
         static bool changeRun = true;
+        private static string pathstring;
+        private static IEnumerable<object> file;
+
         public static void DRINKS()
         {
             string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/Drinks.csv";
@@ -20,11 +22,65 @@ namespace projectb
                Console.Write(i);
             }
         }
+
+        public static void DAILYOFFERS()
+        {
+            var date = DateTime.Now;
+            string a = date.ToString("dddd");
+
+            if (a.Equals("Monday", StringComparison.OrdinalIgnoreCase))
+            {
+                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailyMon.csv";
+                var csvread = File.ReadAllText(pathstring);
+                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var i in file)
+                {
+                    Console.Write(i);
+                }
+            }
+
+            else if (a.Equals("Tuesday", StringComparison.OrdinalIgnoreCase))
+            {
+                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailyDi.csv";
+                var csvread = File.ReadAllText(pathstring);
+                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var i in file)
+                {
+                    Console.Write(i);
+                }
+            }
+
+            else if (a.Equals("Wednesday", StringComparison.OrdinalIgnoreCase))
+            {
+                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailyWo.csv";
+                var csvread = File.ReadAllText(pathstring);
+                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var i in file)
+                {
+                    Console.Write(i);
+                }
+            }
+
+            else if (a.Equals("Thursday", StringComparison.OrdinalIgnoreCase))
+            {
+                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailyDo.csv";
+                var csvread = File.ReadAllText(pathstring);
+                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var i in file)
+                {
+                    Console.Write(i);
+                }
+            }
+
+
+        }
+
         public static void FOOD()
         {
             string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/Food.csv";
             var csvread = File.ReadAllText(pathstring);
             String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
+           
 
             foreach (var i in file)
             {
@@ -44,7 +100,6 @@ namespace projectb
         }
         public static void CHANGEask()
         {
-            changeRun = true;
             Console.WriteLine("Which file would you like to read and change?\n" +
                 "Choose from: Drinks, Food, Specials or Daily");
             string changeIN = Console.ReadLine();
@@ -55,7 +110,7 @@ namespace projectb
                     changeRun = false;
                     DRINKS();
                     Console.WriteLine("hierna aanpassen en kiezen welke rij, column en artikel het moet worden...");
-                    ADDcsv();
+                    //CHANGEcsv();
                 }
                 else if (changeIN.Equals("Food", StringComparison.OrdinalIgnoreCase))
                 {
@@ -78,31 +133,10 @@ namespace projectb
         }
 
 
-        public static void ADDcsv()
+        public static void CHANGEcsv()
         {
-            Console.WriteLine("NR??: ");
-            string nr4 = Console.ReadLine();
-            Console.WriteLine("NR11: ");
-            string nr1 = Console.ReadLine();
-            Console.WriteLine("NR22: ");
-            string nr2 = Console.ReadLine();
-            Console.WriteLine("NR33: ");
-            string nr3 = Console.ReadLine();
-            string eind = "\""+ nr4 + " \";\"" + nr1 + ":  \"" + ";\"" + nr2 + " \";\"" + nr3 + " \"";
-
-
-            string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/Drinks.csv";
-            var csvread = File.ReadAllText(pathstring);
-            using (StreamWriter sw = File.AppendText(pathstring))
-            {
-
-                sw.WriteLine(eind);
-                //hier iets zodat het erop lijkt??????
-            }
-            DRINKS();
-
             //>>>>>> NOG TESTEN DEZE HIERONDER <<<<<<
-            //Chilkat.Csv csv = new Chilkat.Csv();
+            // Chilkat.Csv csv = new Chilkat.Csv();
 
             //  Prior to loading the CSV file, indicate that the 1st row
             //  should be treated as column names:
@@ -124,7 +158,6 @@ namespace projectb
             //  Save the CSV to a file:
             //   success = csv.SaveFile("out.csv");
             //hier dan dezelfde weer als savefile?
-
         }
 
     }
