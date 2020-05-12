@@ -59,6 +59,8 @@ namespace testproject1
 
             while (QA8)
             {
+
+
                 Console.WriteLine("Do you want to write a review? [Yes] / [No]");
                 readQAstar = Console.ReadLine();
                 if (readQAstar.Equals("yes", StringComparison.OrdinalIgnoreCase))
@@ -68,7 +70,7 @@ namespace testproject1
                 }
                 else if (readQAstar.Equals("no", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine("You chose no, so you will be guided back to the first question of the written reviews page.");
+                    Console.WriteLine("You chose no, so you will be guided back to the first question of the star reviews page.");
                     QA8 = false;
                     StarRevMenu();
                 }
