@@ -72,6 +72,39 @@ namespace projectb
                 }
             }
 
+            else if (a.Equals("Friday", StringComparison.OrdinalIgnoreCase))
+            {
+                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailyFri.csv";
+                var csvread = File.ReadAllText(pathstring);
+                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var i in file)
+                {
+                    Console.Write(i);
+                }
+            }
+
+            else if (a.Equals("Saturday", StringComparison.OrdinalIgnoreCase))
+            {
+                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailySa.csv";
+                var csvread = File.ReadAllText(pathstring);
+                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var i in file)
+                {
+                    Console.Write(i);
+                }
+            }
+
+            else if (a.Equals("Sunday", StringComparison.OrdinalIgnoreCase))
+            {
+                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailySu.csv";
+                var csvread = File.ReadAllText(pathstring);
+                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var i in file)
+                {
+                    Console.Write(i);
+                }
+            }
+
 
         }
 
