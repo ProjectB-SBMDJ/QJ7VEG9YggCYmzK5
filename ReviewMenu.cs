@@ -24,22 +24,22 @@ namespace testproject1 {
                 switch (menuSelection.ToLower()) {
                     case "w":
                         ReviewCode.AskRev();
-                        Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
+                        Console.Clear();
+                        menuHelp();
                         break;
                     case "s":
                         StarReviews.StarRevMenu();
-                        Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
+                        Console.Clear();
+                        menuHelp();
                         break;
                     case "l":
                         ReviewCode.LikeRevs();
-                        Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
-                        break;
-                    case "help":
+                       
                         menuHelp();
                         break;
                     case "e":
                         Console.WriteLine("\n----Welcome Back To The Main Menu----");
-                        Console.WriteLine("Enter \'help\' to view the options!");
+                        Console.WriteLine("Enter \'help\' to view all the options!");
                         menuRunning = false;
                         break;
                     case "":        //empty input

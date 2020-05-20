@@ -6,8 +6,7 @@ namespace testproject1
     public class ReviewCode
     {
         //static = om het global te maken in de hele class
-        static bool QA1;    //for the read question loop
-        static bool QA2;    //for the ask question loop
+        static bool QA1;    //for the read/write question loop
         static bool QA3;    //for the like loop
         static bool QA4;    //for the name input loop
         static bool QA5;    //for the review input loop
@@ -28,16 +27,21 @@ namespace testproject1
             //for the question loop below
             while (QA1)
             {
-                Console.WriteLine("Do you want to read the reviews? [Yes] / [No]");
+                Console.WriteLine("-- Written Reviews --");
+                Console.WriteLine("[R] - Read reviews");
+                Console.WriteLine("[W] - Write a review");
+                Console.WriteLine("[E] - Go back to main menu of reviews");
                 readQA = Console.ReadLine();
-                if (readQA.Equals("yes", StringComparison.OrdinalIgnoreCase))
+                if (readQA.Equals("r", StringComparison.OrdinalIgnoreCase))
                 {
-                    QA1 = false;
                     ReadRevs();
                 }
-                else if (readQA.Equals("no", StringComparison.OrdinalIgnoreCase))
+                else if (readQA.Equals("w", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine("You chose no, so you will go back to the main review menu.");
+                    WriteRevs();
+                }
+                else if (readQA.Equals("e", StringComparison.OrdinalIgnoreCase))
+                {
                     QA1 = false;
                 }
                 else
@@ -45,15 +49,15 @@ namespace testproject1
                     Console.WriteLine("Not a valid input, please try again.");
                 }
             }
-
         }
 
         //---------------------READ WRITTEN REVIEWS------------------------
         public static void ReadRevs()
         {
-            QA2 = true;
+           // QA2 = true;
             //for the question loop below
-            Console.WriteLine("~~ Written reviews ~~");
+
+            Console.WriteLine("~~ Read written reviews ~~");
             Console.WriteLine("Total number of reviews: {0}", reviewsDict.Count);
 
             foreach (KeyValuePair<string, string> i in reviewsDict)
@@ -62,28 +66,6 @@ namespace testproject1
                     i.Key, i.Value);
             }
             //print all items in the reviews dictionary
-
-            while (QA2)
-            {
-                Console.WriteLine("Do you want to write a review? [Yes] / [No]");
-                readQA = Console.ReadLine();
-                if (readQA.Equals("yes", StringComparison.OrdinalIgnoreCase))
-                {
-                    QA2 = false;
-                    WriteRevs();
-                }
-                else if (readQA.Equals("no", StringComparison.OrdinalIgnoreCase))
-                {
-                    Console.WriteLine("You chose no, so you will be guided back to the first question of the written reviews page.");
-                    QA2 = false;
-                    AskRev();
-                }
-                else
-                {
-                    Console.WriteLine("Not a valid input, please try again.");
-                }
-
-            }
         }
 
         //---------------------WRITE REVIEWS------------------------
@@ -121,7 +103,7 @@ namespace testproject1
             Console.WriteLine("\nYour review:\nName: " + nameIn + "\nReview: " + reviewIn);
             reviewsDict.Add(nameIn, reviewIn);
 
-            Console.WriteLine("\nThank you for your review! You will now be guided back to the first question of the written reviews page.");
+            Console.WriteLine("\nThank you for your review! You will be guided back to the main review menu.\n");
             AskRev();
         }
 
@@ -146,7 +128,7 @@ namespace testproject1
                 }
                 else if (readQA.Equals("no", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine("You chose no, so you will be guided back to the main review menu.");
+                    Console.WriteLine("You chose no, so you will be guided back to the main review menu.\n");
                     QA3 = false;
                 }
                 else

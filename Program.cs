@@ -33,7 +33,6 @@ namespace testproject1
                     readMenuInput();
                     switch (menuSelection.ToLower()) {
                         case "help":
-                            Console.Clear();
                             menuHelp();
                             break;
                         case "menu":

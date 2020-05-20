@@ -8,7 +8,6 @@ namespace testproject1
 
         static bool QA6;    //for the star menu loop
         static bool QA7;    //for the star number loop
-        static bool QA8;    //for the star write loop
         static bool QA9;    //for the name input loop
         static string starsIn; //for the star strings
         static string readQAstar;
@@ -23,19 +22,24 @@ namespace testproject1
         public static void StarRevMenu()
         {
             QA6 = true;
-                //for the question loop below
+            //for the question loop below
             while (QA6)
             {
-                Console.WriteLine("Do you want to see all the star reviews? [Yes] / [No]");
+                Console.WriteLine("-- Star Reviews --");
+                Console.WriteLine("[R] - Read reviews");
+                Console.WriteLine("[L] - Leave a review");
+                Console.WriteLine("[E] - Go back to main menu of reviews");
                 readQAstar = Console.ReadLine();
-                if (readQAstar.Equals("yes", StringComparison.OrdinalIgnoreCase))
+                if (readQAstar.Equals("r", StringComparison.OrdinalIgnoreCase))
                 {
-                    QA6 = false;
                     StarRead();
                 }
-                else if (readQAstar.Equals("no", StringComparison.OrdinalIgnoreCase))
+                else if (readQAstar.Equals("w", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine("You chose no, so you will go back to the main review menu.");
+                    WriteStarRevs();
+                }
+                else if (readQAstar.Equals("e", StringComparison.OrdinalIgnoreCase))
+                {
                     QA6 = false;
                 }
                 else
@@ -43,44 +47,17 @@ namespace testproject1
                     Console.WriteLine("Not a valid input, please try again.");
                 }
             }
-
         }
 
         //---------------------READ STAR REVIEWS------------------------
         public static void StarRead()
         {
-            QA8 = true;
             Console.WriteLine("Total number of reviews: {0}", starRevsDict.Count);
             foreach (KeyValuePair<string, string> i in starRevsDict)
             {
                 Console.WriteLine("Name: {0} \n Review: {1} \n",
                     i.Key, i.Value);
-            }
-
-            while (QA8)
-            {
-
-
-                Console.WriteLine("Do you want to write a review? [Yes] / [No]");
-                readQAstar = Console.ReadLine();
-                if (readQAstar.Equals("yes", StringComparison.OrdinalIgnoreCase))
-                {
-                    WriteStarRevs();
-                    QA8 = false;
-                }
-                else if (readQAstar.Equals("no", StringComparison.OrdinalIgnoreCase))
-                {
-                    Console.WriteLine("You chose no, so you will be guided back to the first question of the star reviews page.");
-                    QA8 = false;
-                    StarRevMenu();
-                }
-                else
-                {
-                    Console.WriteLine("Not a valid input, please try again.");
-                }
-
-            }
-
+            }                       //print all star revies
         }
 
         //---------------------WRITE STAR REVIEW------------------------
@@ -104,7 +81,6 @@ namespace testproject1
                 }
             }
 
-
             while (QA7)
             {
                 Console.Write("How much stars would you like to give? ");
@@ -113,8 +89,7 @@ namespace testproject1
                 {
                     Console.WriteLine("Empty input, please try again.");
                 }
-                else
-                {
+                else{
                     char starsNrchar = starsNrIn[0];                //string to char
                     bool starsNrTF = Char.IsDigit(starsNrchar);     //check if char is digit
 
@@ -129,23 +104,19 @@ namespace testproject1
                             }
                             QA7 = false; //stop the loop
                         }
-                        else
-                        {
+                        else{
                             Console.WriteLine("You can only give 1 to 5 stars, please try again.");
                         }
-
                     }
-                    else
-                    {
+                    else{
                         Console.WriteLine("\'" + starsNrIn + "\' is not a number, please try again.");
                     }
                 }
-
             }
             Console.WriteLine("\nYour review:\nName: " + nameIn + "\nReview: " + starsIn);
             starRevsDict.Add(nameIn, starsIn);
 
-            Console.WriteLine("\nThank you for your review! You will now be guided back to the first question of the star reviews page.");
+            Console.WriteLine("\nThank you for your review! You will now be guided back to the menu of the star reviews page.\n");
             StarRevMenu();
         }
 
