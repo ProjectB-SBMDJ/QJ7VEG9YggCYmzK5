@@ -1,25 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using Newtonsoft.Json.Linq;
+using projectb;
 
 
 namespace projectb
 {
     public class csvcalls
     {
+
+        private static string reservationsDatabase = Directory.GetCurrentDirectory() + "/../../../allMenu.json";
         static bool changeRun = true;
         private static string pathstring;
         private static IEnumerable<object> file;
 
         public static void DRINKS()
         {
-            string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/Drinks.csv";
-            var csvread = File.ReadAllText(pathstring);
-            String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
-         
-            foreach (var i in file)
+            var json = File.ReadAllText(reservationsDatabase);
+            try
             {
-               Console.Write(i);
+                var jObject = JObject.Parse(json);
+
+                if (jObject != null)
+                {
+                    JArray reservationsArray = (JArray)jObject["Drinks"];
+                    if (reservationsArray != null)
+                    {
+                        foreach (var item in reservationsArray)
+                        {
+                            Console.WriteLine("NR.: " + item["nr"].ToString() + "    Sort: " + item["sort"].ToString() + "   Name: " + item["name"].ToString() + "   Price: " + item["price"].ToString() + " Euro's"); ;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
@@ -28,107 +47,271 @@ namespace projectb
             var date = DateTime.Now;
             string a = date.ToString("dddd");
 
-            if (a.Equals("Monday", StringComparison.OrdinalIgnoreCase))
+            var json = File.ReadAllText(reservationsDatabase);
+            try
             {
-                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailyMon.csv";
-                var csvread = File.ReadAllText(pathstring);
-                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (var i in file)
+                if (a.Equals("Monday", StringComparison.OrdinalIgnoreCase))
+
                 {
-                    Console.Write(i);
+                    var jObject = JObject.Parse(json);
+
+                    if (jObject != null)
+                    {
+                        {
+                            JArray reservationsArray = (JArray)jObject["Monday"];
+
+                            if (reservationsArray != null)
+                            {
+                                foreach (var item in reservationsArray)
+                                {
+                                    Console.WriteLine("NR.: " + item["nr"].ToString() + "    Sort: " + item["sort"].ToString() + "   Name: " + item["name"].ToString() + "   Price: " + item["price"].ToString() + " Euro's"); ;
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            try
+            {
+                 if (a.Equals("Tuesday", StringComparison.OrdinalIgnoreCase))
+
+                 {
+                    var jObject = JObject.Parse(json);
+
+                    if (jObject != null)
+                    {
+                         {
+                             JArray reservationsArray = (JArray)jObject["Tuesday"];
+
+                             if (reservationsArray != null)
+                             {
+                                 foreach (var item in reservationsArray)
+                                 {
+                                    Console.WriteLine("NR.: " + item["nr"].ToString() + "    Sort: " + item["sort"].ToString() + "   Name: " + item["name"].ToString() + "   Price: " + item["price"].ToString() + " Euro's"); ;
+                                 }
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            try
+            {
+                if (a.Equals("Wednesday", StringComparison.OrdinalIgnoreCase))
+
+                {
+                    var jObject = JObject.Parse(json);
+
+                    if (jObject != null)
+                    {
+                        {
+                            JArray reservationsArray = (JArray)jObject["Wednesday"];
+
+                            if (reservationsArray != null)
+                            {
+                                foreach (var item in reservationsArray)
+                                {
+                                    Console.WriteLine("NR.: " + item["nr"].ToString() + "    Sort: " + item["sort"].ToString() + "   Name: " + item["name"].ToString() + "   Price: " + item["price"].ToString() + " Euro's"); ;
+                                }
+
+                            }
+                        }
+                    }
                 }
             }
 
-            else if (a.Equals("Tuesday", StringComparison.OrdinalIgnoreCase))
+            catch (Exception)
             {
-                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailyDi.csv";
-                var csvread = File.ReadAllText(pathstring);
-                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (var i in file)
+
+                throw;
+            }
+            try
+            {
+                if (a.Equals("Thursday", StringComparison.OrdinalIgnoreCase))
+
                 {
-                    Console.Write(i);
+                    var jObject = JObject.Parse(json);
+
+                    if (jObject != null)
+                    {
+                        {
+                            JArray reservationsArray = (JArray)jObject["Thursday"];
+
+                            if (reservationsArray != null)
+                            {
+                                foreach (var item in reservationsArray)
+                                {
+                                    Console.WriteLine("NR.: " + item["nr"].ToString() + "    Sort: " + item["sort"].ToString() + "   Name: " + item["name"].ToString() + "   Price: " + item["price"].ToString() + " Euro's"); ;
+                                }
+
+                            }
+                        }
+                    }
                 }
             }
 
-            else if (a.Equals("Wednesday", StringComparison.OrdinalIgnoreCase))
+            catch (Exception)
             {
-                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailyWo.csv";
-                var csvread = File.ReadAllText(pathstring);
-                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (var i in file)
+
+                throw;
+            }
+            try
+            {
+                if (a.Equals("Friday", StringComparison.OrdinalIgnoreCase))
+
                 {
-                    Console.Write(i);
+                    var jObject = JObject.Parse(json);
+
+                    if (jObject != null)
+                    {
+                        {
+                            JArray reservationsArray = (JArray)jObject["Friday"];
+
+                            if (reservationsArray != null)
+                            {
+                                foreach (var item in reservationsArray)
+                                {
+                                    Console.WriteLine("NR.: " + item["nr"].ToString() + "    Sort: " + item["sort"].ToString() + "   Name: " + item["name"].ToString() + "   Price: " + item["price"].ToString() + " Euro's"); ;
+                                }
+
+                            }
+                        }
+                    }
                 }
             }
 
-            else if (a.Equals("Thursday", StringComparison.OrdinalIgnoreCase))
+            catch (Exception)
             {
-                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailyDo.csv";
-                var csvread = File.ReadAllText(pathstring);
-                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (var i in file)
+
+                throw;
+            }
+            try
+            {
+                if (a.Equals("Saturday", StringComparison.OrdinalIgnoreCase))
+
                 {
-                    Console.Write(i);
+                    var jObject = JObject.Parse(json);
+
+                    if (jObject != null)
+                    {
+                        {
+                            JArray reservationsArray = (JArray)jObject["Saturday"];
+
+                            if (reservationsArray != null)
+                            {
+                                foreach (var item in reservationsArray)
+                                {
+                                    Console.WriteLine("NR.: " + item["nr"].ToString() + "    Sort: " + item["sort"].ToString() + "   Name: " + item["name"].ToString() + "   Price: " + item["price"].ToString() + " Euro's"); ;
+                                }
+
+                            }
+                        }
+                    }
                 }
             }
 
-            else if (a.Equals("Friday", StringComparison.OrdinalIgnoreCase))
+            catch (Exception)
             {
-                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailyFri.csv";
-                var csvread = File.ReadAllText(pathstring);
-                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (var i in file)
+
+                throw;
+            }
+            try
+            {
+                if (a.Equals("Sunday", StringComparison.OrdinalIgnoreCase))
+
                 {
-                    Console.Write(i);
+                    var jObject = JObject.Parse(json);
+
+                    if (jObject != null)
+                    {
+                        {
+                            JArray reservationsArray = (JArray)jObject["Sunday"];
+
+                            if (reservationsArray != null)
+                            {
+                                foreach (var item in reservationsArray)
+                                {
+                                    Console.WriteLine("NR.: " + item["nr"].ToString() + "    Sort: " + item["sort"].ToString() + "   Name: " + item["name"].ToString() + "   Price: " + item["price"].ToString() + " Euro's"); ;
+                                }
+
+                            }
+                        }
+                    }
                 }
             }
 
-            else if (a.Equals("Saturday", StringComparison.OrdinalIgnoreCase))
+            catch (Exception)
             {
-                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailySa.csv";
-                var csvread = File.ReadAllText(pathstring);
-                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (var i in file)
-                {
-                    Console.Write(i);
-                }
-            }
 
-            else if (a.Equals("Sunday", StringComparison.OrdinalIgnoreCase))
-            {
-                string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/DailySu.csv";
-                var csvread = File.ReadAllText(pathstring);
-                String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (var i in file)
-                {
-                    Console.Write(i);
-                }
+                throw;
             }
-
 
         }
 
+
+    
         public static void FOOD()
         {
-            string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/Food.csv";
-            var csvread = File.ReadAllText(pathstring);
-            String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
-           
-
-            foreach (var i in file)
+            var json = File.ReadAllText(reservationsDatabase);
+            try
             {
-                Console.Write(i);
+                var jObject = JObject.Parse(json);
+
+                if (jObject != null)
+                {
+                    JArray reservationsArray = (JArray)jObject["Food"];
+                    if (reservationsArray != null)
+                    {
+                        foreach (var item in reservationsArray)
+                        {
+                            Console.WriteLine("NR.: " + item["nr"].ToString() + "    Sort: " + item["sort"].ToString() + "   Name: " + item["name"].ToString() + "   Price: " + item["price"].ToString() + " Euro's"); ;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
+
         public static void SPECIALS()
         {
-            string pathstring = Directory.GetCurrentDirectory() + "/../../../csv_files/Specials.csv";
-            var csvread = File.ReadAllText(pathstring);
-            String[] file = csvread.Split(new char[] { '"', ';' }, StringSplitOptions.RemoveEmptyEntries);
-
-            foreach (var i in file)
+            var json = File.ReadAllText(reservationsDatabase);
+            try
             {
-                Console.Write(i);
+                var jObject = JObject.Parse(json);
+
+                if (jObject != null)
+                {
+                    JArray reservationsArray = (JArray)jObject["Specials"];
+                    if (reservationsArray != null)
+                    {
+                        foreach (var item in reservationsArray)
+                        {
+                            Console.WriteLine("NR.: " + item["nr"].ToString() + "    Sort: " + item["sort"].ToString() + "   Name: " + item["name"].ToString() + "  For only " + item["price"].ToString() + " Euro's"); ;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
         public static void CHANGEask()

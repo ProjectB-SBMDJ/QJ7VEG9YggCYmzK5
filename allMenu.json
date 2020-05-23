@@ -1,0 +1,270 @@
+﻿{
+  "Drinks": [
+    {
+      "name": "Heineken",
+      "price": "4,00",
+      "sort": "Beer",
+      "nr": 1
+    },
+    {
+      "name": "Amstel",
+      "price": "4,00",
+      "sort": "Beer",
+      "nr": 2
+    },
+    {
+      "name": "Blue Moon",
+      "price": "4,00",
+      "sort": "Beer",
+      "nr": 3
+    },
+    {
+      "name": "Lemonade",
+      "price": "4,00",
+      "sort": "Soft Drink",
+      "nr": 4
+    },
+    {
+      "name": "Coke",
+      "price": "5,00",
+      "sort": "Soft Drink",
+      "nr": 5
+    },
+    {
+      "name": "Tonic Water",
+      "price": "6,00",
+      "sort": "Soft Drink",
+      "nr": 6
+    },
+    {
+      "name": "Soda Water",
+      "price": "7,00",
+      "sort": "Soft Drink",
+      "nr": 7
+    },
+    {
+      "name": "Jack Daniel Wiskey",
+      "price": "20,00",
+      "sort": "Spirits",
+      "nr": 8
+    },
+    {
+      "name": "Smirnoff Vodka",
+      "price": "30,00",
+      "sort": "Spirits",
+      "nr": 9
+    },
+    {
+      "name": "Blue Moon",
+      "price": "25,00",
+      "sort": "Gordon's Gin",
+      "nr": 10
+    }
+  ],
+  "Food": [
+    {
+      "name": "Pizza funghi",
+      "price": "9,00",
+      "sort": "Pizza",
+      "nr": 14
+    },
+    {
+      "name": "Pizza Margherita",
+      "price": "8,00",
+      "sort": "Pizza",
+      "nr": 15
+    },
+    {
+      "name": "Pizza Salame",
+      "price": "9,00",
+      "sort": "Pizza",
+      "nr": 16
+    },
+    {
+      "name": "Pizza Pollo",
+      "price": "9,00",
+      "sort": "Pizza",
+      "nr": 17
+    },
+    {
+      "name": "Pizza Tonno",
+      "price": "9,00",
+      "sort": "Pizza",
+      "nr": 18
+    },
+    {
+      "name": "Pasta Carbonara",
+      "price": "8,00",
+      "sort": "Pasta",
+      "nr": 19
+    },
+    {
+      "name": "Pasta Bolognese",
+      "price": "8,00",
+      "sort": "Pasta",
+      "nr": 20
+    },
+    {
+      "name": "Pasta Siciliana",
+      "price": "9,00",
+      "sort": "Pasta",
+      "nr": 21
+    },
+    {
+      "name": "Pasta Pollo e funghi",
+      "price": "7,00",
+      "sort": "Pasta",
+      "nr": 22
+    },
+    {
+      "name": "Filetto al Pepe",
+      "price": "10,00",
+      "sort": "Meat",
+      "nr": 23
+    },
+    {
+      "name": "Filetto al Griglia",
+      "price": "12,00",
+      "sort": "Meat",
+      "nr": 24
+    },
+    {
+      "name": "Filetto al Funghi",
+      "price": "13,00",
+      "sort": "Meat",
+      "nr": 25
+    },
+    {
+      "name": "Scalop Pina Romana",
+      "price": "15,00",
+      "sort": "Meat",
+      "nr": 26
+    },
+    {
+      "name": "Salade Rucola",
+      "price": "6,00",
+      "sort": "Salade",
+      "nr": 27
+    },
+    {
+      "name": "Salade Mista",
+      "price": "5,00",
+      "sort": "Salade",
+      "nr": 28
+    },
+    {
+      "name": "Salade Mozzarella",
+      "price": "7,00",
+      "sort": "Salade",
+      "nr": 29
+    },
+    {
+      "name": "Salade Tonno",
+      "price": "8,00",
+      "sort": "Salade",
+      "nr": 30
+    },
+    {
+      "name": "Salade Feta",
+      "price": "7,00",
+      "sort": "Salade",
+      "nr": 31
+    }
+  ],
+  "Specials": [
+    {
+      "name": "Pizza + Soft Drink",
+      "price": "10,00",
+      "sort": "Offer",
+      "nr": 32
+    },
+    {
+      "name": "Pasta + Soft Drink",
+      "price": "9,00",
+      "sort": "Offer",
+      "nr": 33
+    },
+    {
+      "name": "Pizza + Salade",
+      "price": "12,00",
+      "sort": "Offer",
+      "nr": 34
+    },
+    {
+      "name": "Pasta + Salade",
+      "price": "10,00",
+      "sort": "Offer",
+      "nr": 35
+    },
+    {
+      "name": "Meat + Salade",
+      "price": "13,00",
+      "sort": "Offer",
+      "nr": 36
+    },
+    {
+      "name": "Meat + Soft Drink",
+      "price": "11,00",
+      "sort": "Offer",
+      "nr": 37
+    }
+  ],
+
+  "Saturday": [
+    {
+      "name": "Pasta Carbonara + Heineken",
+      "price": "10,00",
+      "sort": "Daily Offer",
+      "nr": 43
+    }
+  ],
+  "Sunday": [
+    {
+      "name": "2 Pizza Pollo + 2 Soft Drinks",
+      "price": "20,00",
+      "sort": "Daily Offer",
+      "nr": 44
+    }
+  ],
+  "Monday": [
+    {
+      "name": "Pizza Salame + Salade",
+      "price": "12,00",
+      "sort": "Daily Offer",
+      "nr": 38
+    }
+  ],
+  "Tuesday": [
+    {
+      "name": "Filetto al Griglia + Smirnoff Vodka",
+      "price": "35,00",
+      "sort": "Daily Offer",
+      "nr": 39
+    }
+  ],
+  "Wednesday": [
+    {
+      "name": "Filetto al Funghi + Jack Daniel Whiskey",
+      "price": "10,00",
+      "sort": "Daily Offer",
+      "nr": 40
+    }
+  ],
+  "Thursday": [
+    {
+      "name": "Filetto al Pepe + Salade feta",
+      "price": "15,00",
+      "sort": "Daily Offer",
+      "nr": 41
+    }
+  ],
+  "Friday": [
+    {
+      "name": "Scaloppina romana + Moet & Chardon",
+      "price": "50,00",
+      "sort": "Daily Offer",
+      "nr": 42
+    }
+  ]
+} 
+
