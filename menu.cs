@@ -14,7 +14,7 @@ namespace testproject1
             var date = DateTime.Now;
             string a = date.ToString("dddd");
             Console.WriteLine("-------------------------------\n|     Welcome to the menu     |\n-------------------------------");
-            Console.WriteLine(" [DO] - Daily offers \n [S] - Special offers\n [F] - Food\n [D] - Drink");
+            Console.WriteLine(" [DO] - Daily offers \n [S] - Special offers\n [F] - Food\n [D] - Drink\n [am] - Add Menu");
 
             while (chosen)
             {
@@ -46,6 +46,11 @@ namespace testproject1
                     chosen = false;
                     Console.WriteLine("*** Welcome to the Drinks ***");
                     csvcalls.DRINKS(); //get to the csv file drinks
+                }
+                else if (choiceM.Equals("am", StringComparison.OrdinalIgnoreCase))
+                {
+                    chosen = false;
+                    csvcalls.addMenu();
                 }
                 else if (choiceM.Equals("111", StringComparison.OrdinalIgnoreCase))
                 {

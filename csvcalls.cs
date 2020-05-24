@@ -80,34 +80,34 @@ namespace projectb
 
             try
             {
-                 if (a.Equals("Tuesday", StringComparison.OrdinalIgnoreCase))
+                if (a.Equals("Tuesday", StringComparison.OrdinalIgnoreCase))
 
-                 {
+                {
                     var jObject = JObject.Parse(json);
 
                     if (jObject != null)
                     {
-                         {
-                             JArray reservationsArray = (JArray)jObject["Tuesday"];
+                        {
+                            JArray reservationsArray = (JArray)jObject["Tuesday"];
 
-                             if (reservationsArray != null)
-                             {
-                                 foreach (var item in reservationsArray)
-                                 {
+                            if (reservationsArray != null)
+                            {
+                                foreach (var item in reservationsArray)
+                                {
                                     Console.WriteLine("NR.: " + item["nr"].ToString() + "    Sort: " + item["sort"].ToString() + "   Name: " + item["name"].ToString() + "   Price: " + item["price"].ToString() + " Euro's"); ;
-                                 }
-
                                 }
+
                             }
                         }
                     }
                 }
+            }
 
-                catch (Exception)
-                {
+            catch (Exception)
+            {
 
-                    throw;
-                }
+                throw;
+            }
             try
             {
                 if (a.Equals("Wednesday", StringComparison.OrdinalIgnoreCase))
@@ -262,7 +262,7 @@ namespace projectb
         }
 
 
-    
+
         public static void FOOD()
         {
             var json = File.ReadAllText(reservationsDatabase);
@@ -348,33 +348,156 @@ namespace projectb
 
         }
 
+      
+           
 
-        public static void CHANGEcsv()
-        {
-            //>>>>>> NOG TESTEN DEZE HIERONDER <<<<<<
-            // Chilkat.Csv csv = new Chilkat.Csv();
+            public static void addMenu()
+            {
+                var name = getName();
+                var sort = getSort();
+                var Nr = getNr();
+                var Price = getPrice();
+                string part = getPart();
+                string resInput;
 
-            //  Prior to loading the CSV file, indicate that the 1st row
-            //  should be treated as column names:
-            // csv.HasColumnNames = true;
+           
+            //----------VARIABLES-----------------------------------------------------------------------------------------------
+            string menuName;
+            string menuSort;
+            string menuNr;
+            string menuPrice;
+            string menuPart;
 
-            //  Load the CSV records from the file:
-            //  success = csv.LoadFile("sample.csv");
+            //----------FUNCTIONS-----------------------------------------------------------------------------------------------
 
+            //Get name for reservation.
+            string getPart()
+            {
+                Console.Write("Please enter the part of the menu ([C] to cancel): ");
+                menuPart = Console.ReadLine();
+                resInput = menuPart;
+                while (string.IsNullOrEmpty(menuPart))
+                {
+                    Console.WriteLine("Empty input, Please try again");
+                    menuPart = Console.ReadLine();
+                }
+                return menuPart;
+            }
 
-            //  Change "cheese" to "baguette"
-            //  "cheese" is at row=0, column=3
-            //success = csv.SetCell(0, 3, "baguette");
+            //Get name for reservation.
+            string getName()
+            {
+                Console.Write("Please enter the name of the menu ([C] to cancel): ");
+                menuName = Console.ReadLine();
+                resInput = menuName;
+                while (string.IsNullOrEmpty(menuName))
+                {
+                    Console.WriteLine("Empty input, Please try again");
+                    menuName = Console.ReadLine();
+                }
+                return menuName;
+            }
 
-            //  Write the updated CSV to a string and display:
-            //     string csvDoc;
-            //     csvDoc = csv.SaveToString();
-            //    Console.WriteLine(csvDoc);
+            //Get date of reservation
+            string getSort()
+            {
+                if (resInput != "c")
+                {
+                    Console.Write("Please enter the sort of the menu: ");
+                    menuSort = Console.ReadLine();
+                    while (string.IsNullOrEmpty(menuSort))
+                    {
+                        Console.Write("Empty input, please try again: ");
+                        menuSort = Console.ReadLine();
+                    }
+                }
+                else
+                {
+                    menuSort = "_";
+                }
+                return menuSort;
+            }
 
-            //  Save the CSV to a file:
-            //   success = csv.SaveFile("out.csv");
-            //hier dan dezelfde weer als savefile?
+            //Get time for reservation.
+            string getNr()
+            {
+                if (resInput != "c")
+                {
+                    Console.Write("Please enter the Nr. of the menu: ");
+                    menuNr = Console.ReadLine();
+                    while (string.IsNullOrEmpty(menuNr))
+                    {
+                        Console.Write("Empty input, please try again: ");
+                        menuNr = Console.ReadLine();
+                    }
+                }
+                else
+                {
+                    menuNr = "_";
+                }
+                return menuNr;
+            }
+
+            //Get amount of guests for reservation.
+            string getPrice()
+            {
+                if (resInput != "c")
+                {
+                    Console.Write("Please enter the price of the menu: ");
+                    menuPrice = Console.ReadLine();
+                    while (string.IsNullOrEmpty(menuPrice))
+                    {
+                        Console.Write("Empty input, Please try again: ");
+                        menuPrice = Console.ReadLine();
+                    }
+                }
+                else
+                {
+                    menuPrice = "_";
+                }
+                return menuPrice;
+            }
+            //Reads inputs for the reservation menu's options.
+            void readMenuInput()
+            {
+                Console.Write(": ");
+                menuName = Console.ReadLine();
+            }
+
+            if (resInput != "c")
+            {
+                var newMenu = "{ 'name': '" + name + "', 'sort': '" + sort + "', 'Nr': '" + Nr + "', 'Price': " + Price;
+                try
+                {
+                    var json = File.ReadAllText(reservationsDatabase);
+                    var jsonObj = JObject.Parse(json);
+                    var reservationsArray = jsonObj.GetValue(part) as JArray;
+                    var addMenu = JObject.Parse(newMenu);
+                    reservationsArray.Add(addMenu);
+
+                    jsonObj[part] = reservationsArray;
+                    string newJsonResult = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj,
+                                           Newtonsoft.Json.Formatting.Indented);
+                    File.WriteAllText(reservationsDatabase, newJsonResult);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Add Error : " + ex.Message.ToString());
+                }
+
+                Console.Clear();
+                Console.WriteLine("Menu Saved... Your menu code is: " + Nr);
+                System.Threading.Thread.Sleep(3000);
+                Console.Clear();
+            }
+            else
+            {
+                Console.Clear();
+            }
+
         }
-
+        }
     }
-}
+
+
+
