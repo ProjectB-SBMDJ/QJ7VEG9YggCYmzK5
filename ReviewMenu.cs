@@ -39,15 +39,14 @@ namespace testproject1 {
                     case "w":
                         Console.Clear();
                         ReviewCode.AskRev();
-                        Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
                         break;
                     case "s":
+                        Console.Clear();
                         StarReviews.StarRevMenu();
-                        Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
                         break;
                     case "l":
+                        Console.Clear();
                         ReviewCode.LikeRevs();
-                        Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
                         break;
                     case "help":
                         menuHelp();

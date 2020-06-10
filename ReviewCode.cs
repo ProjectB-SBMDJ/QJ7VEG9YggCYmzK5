@@ -24,6 +24,21 @@ namespace testproject1
         //---------------------WRITTEN REVIEW MENU------------------------
         public static void AskRev()
         {
+
+            void ColoredConsoleWriteLine(ConsoleColor color, string text) {
+                ConsoleColor originalColor = Console.ForegroundColor;
+                Console.ForegroundColor = color;
+                Console.WriteLine(text);
+                Console.ForegroundColor = originalColor;
+            }
+
+            void ColoredConsoleWrite(ConsoleColor color, string text) {
+                ConsoleColor originalColor = Console.ForegroundColor;
+                Console.ForegroundColor = color;
+                Console.Write(text);
+                Console.ForegroundColor = originalColor;
+            }
+
             QA1 = true;
             //for the question loop below
             while (QA1)
@@ -40,7 +55,8 @@ namespace testproject1
                 else if (readQA.Equals("no", StringComparison.OrdinalIgnoreCase))
                 {
                     Console.Clear();
-                    Console.WriteLine("You chose no, so you will go back to the main review menu.");
+                    ColoredConsoleWriteLine(ConsoleColor.Cyan, "Welcome to the Reviews System");
+                    Console.WriteLine("[W] - Written reviews \n[S] - Star reviews\n[L] - Number of likes\n[E] - Exit and back to the main page\n");
                     QA1 = false;
                 }
                 else
@@ -133,6 +149,21 @@ namespace testproject1
         //---------------------LIKES------------------------
         public static void LikeRevs()
         {
+
+            void ColoredConsoleWriteLine(ConsoleColor color, string text) {
+                ConsoleColor originalColor = Console.ForegroundColor;
+                Console.ForegroundColor = color;
+                Console.WriteLine(text);
+                Console.ForegroundColor = originalColor;
+            }
+
+            void ColoredConsoleWrite(ConsoleColor color, string text) {
+                ConsoleColor originalColor = Console.ForegroundColor;
+                Console.ForegroundColor = color;
+                Console.Write(text);
+                Console.ForegroundColor = originalColor;
+            }
+
             QA3 = true;
             //for the like loop below
             Console.WriteLine("--- The number of likes is " + likes + " ---");
@@ -146,11 +177,17 @@ namespace testproject1
                     likes += 1; //total number of likes goes up by one
                     Console.Write("The number of likes is now " + likes + ".");
                     Console.WriteLine(" You will be guided back to the main review menu.");
+                    System.Threading.Thread.Sleep(3000);
+                    Console.Clear();
+                    ColoredConsoleWriteLine(ConsoleColor.Blue, "Welcome to the Reviews System");
+                    Console.WriteLine("[W] - Written reviews \n[S] - Star reviews\n[L] - Number of likes\n[E] - Exit and back to the main page\n");
                     QA3 = false;
                 }
                 else if (readQA.Equals("no", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine("You chose no, so you will be guided back to the main review menu.");
+                    Console.Clear();
+                    ColoredConsoleWriteLine(ConsoleColor.Blue, "Welcome to the Reviews System");
+                    Console.WriteLine("[W] - Written reviews \n[S] - Star reviews\n[L] - Number of likes\n[E] - Exit and back to the main page\n");
                     QA3 = false;
                 }
                 else

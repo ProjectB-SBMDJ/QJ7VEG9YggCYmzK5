@@ -22,6 +22,21 @@ namespace testproject1
         //---------------------STAR REVIEWS MENU------------------------
         public static void StarRevMenu()
         {
+
+            void ColoredConsoleWriteLine(ConsoleColor color, string text) {
+                ConsoleColor originalColor = Console.ForegroundColor;
+                Console.ForegroundColor = color;
+                Console.WriteLine(text);
+                Console.ForegroundColor = originalColor;
+            }
+
+            void ColoredConsoleWrite(ConsoleColor color, string text) {
+                ConsoleColor originalColor = Console.ForegroundColor;
+                Console.ForegroundColor = color;
+                Console.Write(text);
+                Console.ForegroundColor = originalColor;
+            }
+
             QA6 = true;
                 //for the question loop below
             while (QA6)
@@ -30,6 +45,7 @@ namespace testproject1
                 readQAstar = Console.ReadLine();
                 if (readQAstar.Equals("yes", StringComparison.OrdinalIgnoreCase))
                 {
+                    Console.Clear();
                     QA6 = false;
                     StarRead();
                 }
@@ -37,6 +53,9 @@ namespace testproject1
                 {
                     Console.WriteLine("You chose no, so you will go back to the main review menu.");
                     QA6 = false;
+                    Console.Clear();
+                    ColoredConsoleWriteLine(ConsoleColor.Cyan, "Welcome to the Reviews System");
+                    Console.WriteLine("[W] - Written reviews \n[S] - Star reviews\n[L] - Number of likes\n[E] - Exit and back to the main page\n");
                 }
                 else
                 {
@@ -68,6 +87,7 @@ namespace testproject1
                 }
                 else if (readQAstar.Equals("no", StringComparison.OrdinalIgnoreCase))
                 {
+                    Console.Clear();
                     Console.WriteLine("You chose no, so you will be guided back to the first question of the written reviews page.");
                     QA8 = false;
                     StarRevMenu();
