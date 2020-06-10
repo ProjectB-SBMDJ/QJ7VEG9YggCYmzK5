@@ -1,4 +1,5 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json.Linq;
@@ -8,6 +9,15 @@ namespace testproject1
 {
 
     public class Menu
+=======
+
+using projectb;
+
+namespace testproject1
+{
+
+    public class Menu
+>>>>>>> bffbcd439109129b81f42dd81e16b56feb8be7c6
     {
         static bool chosen = true;
         private static string reservationsDatabase = Directory.GetCurrentDirectory() + "/../../../allMenu.json";
@@ -68,6 +78,7 @@ namespace testproject1
                 {
                     menuSort = "_";
                 }
+<<<<<<< HEAD
                 return menuSort;
             }
 
@@ -75,6 +86,10 @@ namespace testproject1
             string getNr()
             {
                 if (resInput != "c")
+=======
+
+                else if (choiceM.Equals("am", StringComparison.OrdinalIgnoreCase))
+>>>>>>> bffbcd439109129b81f42dd81e16b56feb8be7c6
                 {
                     Console.Write("Please enter the Nr. of the menu: ");
                     menuNr = Console.ReadLine();
@@ -88,6 +103,7 @@ namespace testproject1
                 {
                     menuNr = "_";
                 }
+<<<<<<< HEAD
                 return menuNr;
             }
 
@@ -103,6 +119,12 @@ namespace testproject1
                         Console.Write("Empty input, Please try again: ");
                         menuPrice = Console.ReadLine();
                     }
+=======
+
+                else if (string.IsNullOrEmpty(choiceM))
+                {   //EMPTY INPUT
+                    Console.WriteLine("Not a valid input, please try again.");
+>>>>>>> bffbcd439109129b81f42dd81e16b56feb8be7c6
                 }
                 else
                 {
@@ -110,14 +132,32 @@ namespace testproject1
                 }
                 return menuPrice;
             }
+<<<<<<< HEAD
 
             void readMenuInput()
+=======
+            backgo();
+        }
+
+        public static void backgo()
+        {
+            chosen = true;
+
+            Console.WriteLine("\nDo you want to go back to the main menu?[yes/no]");
+            string goback = Console.ReadLine();
+
+            if (goback.Equals("no", StringComparison.OrdinalIgnoreCase))
+>>>>>>> bffbcd439109129b81f42dd81e16b56feb8be7c6
             {
                 Console.Write(": ");
                 menuName = Console.ReadLine();
             }
+<<<<<<< HEAD
 
             void addMenu()
+=======
+            else if (goback.Equals("yes", StringComparison.OrdinalIgnoreCase))
+>>>>>>> bffbcd439109129b81f42dd81e16b56feb8be7c6
             {
                 var name = getName();
                 var sort = getSort();

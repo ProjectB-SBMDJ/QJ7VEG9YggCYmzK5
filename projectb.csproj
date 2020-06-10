@@ -9,4 +9,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="LumenWorksCsvReader" Version="4.0.0" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="json_files\" />
+  </ItemGroup>
 </Project>
