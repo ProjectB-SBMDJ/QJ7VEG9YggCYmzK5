@@ -22,8 +22,20 @@ namespace testproject1 {
 
             Random random = new Random();
 
-//----------FUNCTIONS-----------------------------------------------------------------------------------------------
+            //----------FUNCTIONS-----------------------------------------------------------------------------------------------
+            void ColoredConsoleWriteLine(ConsoleColor color, string text) {
+                ConsoleColor originalColor = Console.ForegroundColor;
+                Console.ForegroundColor = color;
+                Console.WriteLine(text);
+                Console.ForegroundColor = originalColor;
+            }
 
+            void ColoredConsoleWrite(ConsoleColor color, string text) {
+                ConsoleColor originalColor = Console.ForegroundColor;
+                Console.ForegroundColor = color;
+                Console.Write(text);
+                Console.ForegroundColor = originalColor;
+            }
             //Get name for reservation.
             string getName() {
                 Console.Write("Please enter a name for the reservation ([C] to cancel): ");
@@ -123,7 +135,9 @@ namespace testproject1 {
                     }
 
                     Console.Clear();
-                    Console.WriteLine("Reservation Saved... Your reservation code is: " + code);
+                    
+                    Console.Write("Reservation Saved... Your reservation code is: ");
+                    ColoredConsoleWrite(ConsoleColor.Green, code.ToString());
                     System.Threading.Thread.Sleep(3000);
                     Console.Clear();
                     menuHelp();
@@ -135,7 +149,7 @@ namespace testproject1 {
 
             //View all of the reservations in the reservations.json file
             void viewReservation() {
-                Console.WriteLine("---------- ALL RESERVATIONS ----------");
+                ColoredConsoleWriteLine(ConsoleColor.Yellow, "---------- ALL RESERVATIONS ----------");
                 var json = File.ReadAllText(reservationsDatabase);
                 try {
                     var jObject = JObject.Parse(json);
@@ -154,7 +168,7 @@ namespace testproject1 {
                     throw;
                 }
                
-                Console.WriteLine("\n[C] - Go Back to Menu");
+                ColoredConsoleWriteLine(ConsoleColor.Red, "\n[C] - Go Back to Menu");
             }
 
             //Delete a reservation from the reservations.json file by entering the reservation code.
@@ -163,7 +177,7 @@ namespace testproject1 {
                 try {
                     var jObject = JObject.Parse(json);
                     JArray reservationsArray = (JArray)jObject["reservations"];
-                    Console.WriteLine("---------- ALL RESERVATIONS ----------");
+                    ColoredConsoleWriteLine(ConsoleColor.Yellow, "---------- ALL RESERVATIONS ----------");
                     if (reservationsArray != null) {
                         foreach (var item in reservationsArray) {
                             Console.WriteLine("Code: " + item["code"].ToString() + "    Name: " + item["name"].ToString() + "   Date: " + item["date"].ToString() + "   Time: " + item["time"].ToString() + "   Amount: " + item["amount"].ToString()); ;
@@ -221,7 +235,7 @@ namespace testproject1 {
                 try {
                     var jObject = JObject.Parse(json);
                     JArray reservationsArray = (JArray)jObject["reservations"];
-                    Console.WriteLine("---------- ALL RESERVATIONS ----------");
+                    ColoredConsoleWriteLine(ConsoleColor.Yellow, "---------- ALL RESERVATIONS ----------");
                     if (reservationsArray != null) {
                         foreach (var item in reservationsArray) {
                             Console.WriteLine("Code: " + item["code"].ToString() + "        Name: " + item["name"].ToString());
@@ -310,13 +324,22 @@ namespace testproject1 {
             //Prints out the options for the reservation menu. If admin is logged in print full menu options.
             //else print guest menu options.
             void menuHelp() {
-                Console.WriteLine("----Welcome to the Reservation System----");
+                ColoredConsoleWriteLine(ConsoleColor.Magenta, "Welcome to the Reservations System");
                 if (AdminSystem.adminLoggedin == true) {
-                    Console.WriteLine(" [M] - Make Reservation\n [V] - View Reservations\n [U] - Update/Change Reservations\n [D] - Delete Reservations\n [E] - Exit and back to the main page\n");
+                    Console.WriteLine(" [M] - Make Reservation\n [V] - View Reservations\n [U] - Change Reservation\n [D] - Delete Reservation\n [E] - Back to Main Menu\n");
                 }
                 else {
-                    Console.WriteLine(" [M] - Make Reservation\n [E] - Exit and back to the main page\n");
+                    Console.WriteLine(" [M] - Make Reservation\n [E] - Back to Main Menu\n");
                 }
+            }
+
+            void mainMenuHelp() {
+                Console.WriteLine(
+                    "[1] - Reviews" +
+                    "\n[2] - Reservations" +
+                    "\n[3] - Our Menu" +
+                    "\n[E] - Close Application"
+                );
             }
 
             //Reservation Menus for admin and guest.
@@ -351,9 +374,10 @@ namespace testproject1 {
                             break;
                         case "e":
                             Console.Clear();
-                            Console.WriteLine("----Welcome Back To The Main Menu----");
-                            Console.WriteLine("Enter \'help\' to view the options!");
-                            menuRunning = false;
+                            ColoredConsoleWriteLine(ConsoleColor.Red, "Welcome to Restaurant DaVinci!");
+                            mainMenuHelp();
+                            Console.Write("\n: ");
+                        menuRunning = false;
                             break;
                         case null:
                         case "":
@@ -376,8 +400,9 @@ namespace testproject1 {
                             break;
                         case "e":
                             Console.Clear();
-                            Console.WriteLine("----Welcome Back To The Main Menu----");
-                            Console.WriteLine("Enter \'help\' to view the options!");
+                            ColoredConsoleWriteLine(ConsoleColor.Red, "Welcome to Restaurant DaVinci!");
+                            mainMenuHelp();
+                            Console.Write("\n: ");
                             menuRunning = false;
                             break;
                         case null:

@@ -29,14 +29,17 @@ namespace testproject1
             while (QA1)
             {
                 Console.WriteLine("Do you want to read the reviews? [Yes] / [No]");
+                Console.Write(": ");
                 readQA = Console.ReadLine();
                 if (readQA.Equals("yes", StringComparison.OrdinalIgnoreCase))
                 {
+                    Console.Clear();
                     QA1 = false;
                     ReadRevs();
                 }
                 else if (readQA.Equals("no", StringComparison.OrdinalIgnoreCase))
                 {
+                    Console.Clear();
                     Console.WriteLine("You chose no, so you will go back to the main review menu.");
                     QA1 = false;
                 }
@@ -69,11 +72,13 @@ namespace testproject1
                 readQA = Console.ReadLine();
                 if (readQA.Equals("yes", StringComparison.OrdinalIgnoreCase))
                 {
+                    Console.Clear();
                     QA2 = false;
                     WriteRevs();
                 }
                 else if (readQA.Equals("no", StringComparison.OrdinalIgnoreCase))
                 {
+                    Console.Clear();
                     Console.WriteLine("You chose no, so you will be guided back to the first question of the written reviews page.");
                     QA2 = false;
                     AskRev();
@@ -117,10 +122,9 @@ namespace testproject1
                     QA5 = false;
                 }
             }
-
+            Console.Clear();
             Console.WriteLine("\nYour review:\nName: " + nameIn + "\nReview: " + reviewIn);
             reviewsDict.Add(nameIn, reviewIn);
-
             Console.WriteLine("\nThank you for your review! You will now be guided back to the first question of the written reviews page.");
             AskRev();
         }

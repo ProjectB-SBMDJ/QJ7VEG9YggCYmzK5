@@ -1,64 +1,59 @@
-﻿{
+{
   "Drinks": [
     {
       "name": "Heineken",
       "price": "4,00",
-      "sort": "Beer",
-      "nr": 1
+      "sort": "Beer"
     },
     {
       "name": "Amstel",
       "price": "4,00",
-      "sort": "Beer",
-      "nr": 2
+      "sort": "Beer"
     },
     {
       "name": "Blue Moon",
       "price": "4,00",
-      "sort": "Beer",
-      "nr": 3
+      "sort": "Beer"
     },
     {
       "name": "Lemonade",
       "price": "4,00",
-      "sort": "Soft Drink",
-      "nr": 4
+      "sort": "Soft Drink"
     },
     {
       "name": "Coke",
       "price": "5,00",
-      "sort": "Soft Drink",
-      "nr": 5
+      "sort": "Soft Drink"
     },
     {
       "name": "Tonic Water",
       "price": "6,00",
-      "sort": "Soft Drink",
-      "nr": 6
+      "sort": "Soft Drink"
     },
     {
       "name": "Soda Water",
       "price": "7,00",
-      "sort": "Soft Drink",
-      "nr": 7
+      "sort": "Soft Drink"
     },
     {
       "name": "Jack Daniel Wiskey",
       "price": "20,00",
-      "sort": "Spirits",
-      "nr": 8
+      "sort": "Spirits"
     },
     {
       "name": "Smirnoff Vodka",
       "price": "30,00",
-      "sort": "Spirits",
-      "nr": 9
+      "sort": "Spirits"
     },
     {
       "name": "Blue Moon",
       "price": "25,00",
-      "sort": "Gordon's Gin",
-      "nr": 10
+      "sort": "Gordon's Gin"
+    },
+    {
+      "name": "Corona",
+      "price": "5,00",
+      "sort": "Beer"
     }
   ],
   "Food": [
@@ -209,7 +204,6 @@
       "nr": 37
     }
   ],
-
   "Saturday": [
     {
       "name": "Pasta Carbonara + Heineken",
@@ -266,5 +260,4 @@
       "nr": 42
     }
   ]
-} 
-
+}

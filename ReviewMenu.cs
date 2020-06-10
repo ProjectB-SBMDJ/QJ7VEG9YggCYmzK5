@@ -12,17 +12,32 @@ namespace testproject1 {
                 menuSelection = Console.ReadLine();
             }
 
-            void menuHelp() {
-                Console.WriteLine("\n----Review Menu----");
-                Console.WriteLine(" [W] - Written reviews \n [S] - Star reviews\n [L] - Number of likes\n [E] - Exit and back to the main page\n");
+            void ColoredConsoleWriteLine(ConsoleColor color, string text) {
+                ConsoleColor originalColor = Console.ForegroundColor;
+                Console.ForegroundColor = color;
+                Console.WriteLine(text);
+                Console.ForegroundColor = originalColor;
             }
 
-            Console.WriteLine("\n----Welcome to the Reviews Page----");
+            void ColoredConsoleWrite(ConsoleColor color, string text) {
+                ConsoleColor originalColor = Console.ForegroundColor;
+                Console.ForegroundColor = color;
+                Console.Write(text);
+                Console.ForegroundColor = originalColor;
+            }
+
+            void menuHelp() {
+                ColoredConsoleWriteLine(ConsoleColor.Cyan, "Welcome to the Reviews System");
+                Console.WriteLine("[W] - Written reviews \n[S] - Star reviews\n[L] - Number of likes\n[E] - Exit and back to the main page\n");
+            }
+
             menuHelp();
             while (menuRunning) {
+                Console.Write(": ");
                 readMenuInput();
                 switch (menuSelection.ToLower()) {
                     case "w":
+                        Console.Clear();
                         ReviewCode.AskRev();
                         Console.WriteLine("\nWhat would you like to do now? (enter \'help\' to see options)");
                         break;
@@ -38,8 +53,14 @@ namespace testproject1 {
                         menuHelp();
                         break;
                     case "e":
-                        Console.WriteLine("\n----Welcome Back To The Main Menu----");
-                        Console.WriteLine("Enter \'help\' to view the options!");
+                        Console.Clear();
+                        ColoredConsoleWriteLine(ConsoleColor.Red, "Welcome to Restaurant DaVinci!");
+                        Console.WriteLine(
+                             "[1] - Reviews" +
+                             "\n[2] - Reservations" +
+                             "\n[3] - Our Menu" +
+                             "\n[E] - Close Application"
+                        );
                         menuRunning = false;
                         break;
                     case "":        //empty input

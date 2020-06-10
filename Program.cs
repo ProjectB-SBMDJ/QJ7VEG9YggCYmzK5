@@ -16,18 +16,33 @@ namespace testproject1
                 menuSelection = Console.ReadLine();
             }
 
+            void ColoredConsoleWriteLine(ConsoleColor color, string text) {
+                ConsoleColor originalColor = Console.ForegroundColor;
+                Console.ForegroundColor = color;
+                Console.WriteLine(text);
+                Console.ForegroundColor = originalColor;
+            }
+
+            void ColoredConsoleWrite(ConsoleColor color, string text) {
+                ConsoleColor originalColor = Console.ForegroundColor;
+                Console.ForegroundColor = color;
+                Console.Write(text);
+                Console.ForegroundColor = originalColor;
+            }
+
             void menuHelp() {
                 Console.WriteLine(
-                    "Enter \'reviews\' to view the Reviews Menu! " +
-                    "\nEnter \'reservations\' to view the Reservation Menu! " +
-                    "\nEnter \'menu\' to view the different Food Menu's! " +
-                    "\nEnter \'exit\' to shutdown the application!"
+                    "[1] - Reviews" +
+                    "\n[2] - Reservations" +
+                    "\n[3] - Our Menu" +
+                    "\n[E] - Close Application"
                 );
             }
 
             void startProgram() {
-                Console.WriteLine("Welcome to the restaurant's console application");
-                Console.WriteLine("Enter \'help\' to view the options!");
+                ColoredConsoleWriteLine(ConsoleColor.Red, "Welcome to Restaurant DaVinci!");
+                menuHelp();
+                Console.Write("\n: ");
 
                 while (menuRunning) {
                     readMenuInput();
@@ -36,19 +51,19 @@ namespace testproject1
                             Console.Clear();
                             menuHelp();
                             break;
-                        case "menu":
+                        case "3":
                             Console.Clear();
                             Menu.menu();
                             break;
-                        case "reviews":
+                        case "1":
                             Console.Clear();
                             ReviewMenu.MenuRev();
                             break;
-                        case "reservations":
+                        case "2":
                             Console.Clear();
                             Reservations.ReservationSystem();
                             break;
-                        case "exit":
+                        case "e":
                             Console.Clear();
                             menuRunning = false;
                             break;
