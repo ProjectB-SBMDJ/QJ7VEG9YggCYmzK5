@@ -14,7 +14,7 @@ namespace testproject1
             var date = DateTime.Now;
             string a = date.ToString("dddd");
             Console.WriteLine("-------------------------------\n|     Welcome to the menu     |\n-------------------------------");
-            Console.WriteLine(" [DO] - Daily offers \n [S] - Special offers\n [F] - Food\n [D] - Drink\n [am] - Add Menu");
+            Console.WriteLine(" [DO] - Daily offers \n [S] - Special offers\n [F] - Food\n [D] - Drink");
 
             while (chosen)
             {
@@ -23,10 +23,13 @@ namespace testproject1
                 if (choiceM.Equals("do", StringComparison.OrdinalIgnoreCase))
                 {
                     chosen = false;
-                    Console.WriteLine("*** Welcome to the Daily Offers ***");
-                    Console.WriteLine("     " + date.ToLongDateString());
-                    csvcalls.DAILYOFFERS(); //get to the csv file DAILYOFFERS
-
+                    DailyOffer();
+                    void DailyOffer() //Daily offers
+                    {
+                        Console.WriteLine("*** Welcome to the Daily Offers ***");
+                        // date today
+                        Console.WriteLine("     " + date.ToLongDateString());
+                    }
                 }
                 else if (choiceM.Equals("s", StringComparison.OrdinalIgnoreCase))
                 {
@@ -47,20 +50,6 @@ namespace testproject1
                     Console.WriteLine("*** Welcome to the Drinks ***");
                     csvcalls.DRINKS(); //get to the csv file drinks
                 }
-
-                else if (choiceM.Equals("am", StringComparison.OrdinalIgnoreCase))
-                {
-                    chosen = false;
-                    csvcalls.addMenu();
-                }
-                else if (choiceM.Equals("111", StringComparison.OrdinalIgnoreCase))
-                {
-                    //Dit is nog hier, maar dit moet naar het admin dingetje verplaats worden zodra hij klaar is
-                    chosen = false;
-                    Console.WriteLine("*aanpassen*");
-                    csvcalls.CHANGEask();
-                }
-
                 else if (string.IsNullOrEmpty(choiceM))
                 {   //EMPTY INPUT
                     Console.WriteLine("Not a valid input, please try again.");
