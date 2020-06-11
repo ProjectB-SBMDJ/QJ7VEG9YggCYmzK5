@@ -7,7 +7,7 @@ namespace testproject1
     {
         //static = om het global te maken in de hele class
         static bool QA1;    //for the read question loop
-        static bool QA2;    //for the ask question loop
+        //static bool QA2;    //for the ask question loop
         static bool QA3;    //for the like loop
         static bool QA4;    //for the name input loop
         static bool QA5;    //for the review input loop
@@ -43,16 +43,22 @@ namespace testproject1
             //for the question loop below
             while (QA1)
             {
-                Console.WriteLine("Do you want to read the reviews? [Yes] / [No]");
-                Console.Write(": ");
+                Console.WriteLine("-- Written Reviews --");
+                Console.WriteLine("[R] - Read reviews");
+                Console.WriteLine("[W] - Write a review");
+                Console.WriteLine("[E] - Go back to main menu of reviews");
+                Console.Write("\n: ");
                 readQA = Console.ReadLine();
-                if (readQA.Equals("yes", StringComparison.OrdinalIgnoreCase))
+                if (readQA.Equals("r", StringComparison.OrdinalIgnoreCase))
                 {
                     Console.Clear();
                     QA1 = false;
                     ReadRevs();
+                } else if (readQA.Equals("w", StringComparison.OrdinalIgnoreCase)) {
+                    Console.Clear();
+                    WriteRevs();
                 }
-                else if (readQA.Equals("no", StringComparison.OrdinalIgnoreCase))
+                else if (readQA.Equals("e", StringComparison.OrdinalIgnoreCase))
                 {
                     Console.Clear();
                     ColoredConsoleWriteLine(ConsoleColor.Cyan, "Welcome to the Reviews System");
@@ -70,8 +76,9 @@ namespace testproject1
         //---------------------READ WRITTEN REVIEWS------------------------
         public static void ReadRevs()
         {
-            QA2 = true;
+            //QA2 = true;
             //for the question loop below
+            Console.Clear();
             Console.WriteLine("~~ Written reviews ~~");
             Console.WriteLine("Total number of reviews: {0}", reviewsDict.Count);
 
@@ -80,31 +87,32 @@ namespace testproject1
                 Console.WriteLine("Name: {0} \n Review: {1} \n",
                     i.Key, i.Value);
             }
+            AskRev();
             //print all items in the reviews dictionary
 
-            while (QA2)
-            {
-                Console.WriteLine("Do you want to write a review? [Yes] / [No]");
-                readQA = Console.ReadLine();
-                if (readQA.Equals("yes", StringComparison.OrdinalIgnoreCase))
-                {
-                    Console.Clear();
-                    QA2 = false;
-                    WriteRevs();
-                }
-                else if (readQA.Equals("no", StringComparison.OrdinalIgnoreCase))
-                {
-                    Console.Clear();
-                    Console.WriteLine("You chose no, so you will be guided back to the first question of the written reviews page.");
-                    QA2 = false;
-                    AskRev();
-                }
-                else
-                {
-                    Console.WriteLine("Not a valid input, please try again.");
-                }
+            //while (QA2)
+            //{
+            //    Console.WriteLine("Do you want to write a review? [Yes] / [No]");
+            //    readQA = Console.ReadLine();
+            //    if (readQA.Equals("yes", StringComparison.OrdinalIgnoreCase))
+            //    {
+            //        Console.Clear();
+            //        QA2 = false;
+            //        WriteRevs();
+            //    }
+            //    else if (readQA.Equals("no", StringComparison.OrdinalIgnoreCase))
+            //    {
+            //        Console.Clear();
+            //        Console.WriteLine("You chose no, so you will be guided back to the first question of the written reviews page.");
+            //        QA2 = false;
+            //        AskRev();
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Not a valid input, please try again.");
+            //    }
 
-            }
+            //}
         }
 
         //---------------------WRITE REVIEWS------------------------

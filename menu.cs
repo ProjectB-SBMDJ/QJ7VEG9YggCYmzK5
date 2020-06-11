@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 using projectb;
 
@@ -26,6 +27,17 @@ namespace testproject1 {
                 Console.ForegroundColor = color;
                 Console.Write(text);
                 Console.ForegroundColor = originalColor;
+            }
+
+            string ToUpperFirstLetter(string source) {
+                if (string.IsNullOrEmpty(source))
+                    return string.Empty;
+                // convert to char array of the string
+                char[] letters = source.ToCharArray();
+                // upper case the first char
+                letters[0] = char.ToUpper(letters[0]);
+                // return the array made of the new char array
+                return new string(letters);
             }
             // day today
             var date = DateTime.Now;
@@ -62,22 +74,22 @@ namespace testproject1 {
                     throw;
                 }
 
-                //Console.WriteLine("\n[C] - Go Back to Menu");
             }
 
             void AddMenu(string menuType) {
-                Console.WriteLine("Enter Dish Name : ");
+                menuType = ToUpperFirstLetter(menuType);
+                Console.WriteLine("Enter Dish/Drink Name: ");
                 var dishName = Console.ReadLine();
-                Console.WriteLine("\nEnter Dish Sort : ");
+                Console.WriteLine("Enter Dish/Drink Sort: ");
                 var dishSort = Console.ReadLine();
-                Console.WriteLine("Enter Dish Price: ");
+                Console.WriteLine("Enter Dish/Drink Price: ");
                 var dishPrice = Console.ReadLine();
 
                 var newMenuItem = "{ 'name': '" + dishName + "', 'price': '" + dishPrice + "', 'sort': '" + dishSort + "'}";
                 try {
                     var json = File.ReadAllText(menuDatabase);
                     var jsonObj = JObject.Parse(json);
-                    var menuArray = jsonObj.GetValue(menuType) as JArray;
+                    var menuArray = jsonObj.GetValue(menuType.ToString()) as JArray;
                     var newMenu = JObject.Parse(newMenuItem);
                     menuArray.Add(newMenu);
 
@@ -88,22 +100,84 @@ namespace testproject1 {
                 } catch (Exception ex) {
                     Console.WriteLine("Add Error : " + ex.Message.ToString());
                 }
+                Console.Write("Menu has been updated...");
+                System.Threading.Thread.Sleep(3000);
+                Console.Clear();
+                ColoredConsoleWriteLine(ConsoleColor.Red, "Welcome to Restaurant DaVinci!");
+                Console.WriteLine(
+                    "[1] - Reviews" +
+                    "\n[2] - Reservations" +
+                    "\n[3] - Our Menu" +
+                    "\n[E] - Close Application"
+                );
             }
+
+            //void deleteMenu(string menuType) {
+            //    menuType = ToUpperFirstLetter(menuType);
+            //    var json = File.ReadAllText(menuDatabase);
+            //    try {
+            //        var jObject = JObject.Parse(json);
+            //        JArray menuArray = (JArray)jObject[menuType];
+            //        Console.Write("\nEnter Name of the Dish/Drink you would like to delete ([C] to cancel): ");
+            //        var readResCode = Console.ReadLine();
+            //        Console.Clear();
+
+            //        if (readResCode != "c") {
+            //            var readName = Console.ReadLine();
+            //            if (readName != null && json.ToString().Contains(readName.ToString())) {
+            //                var name = string.Empty;
+            //                var resToDeleted = menuArray.FirstOrDefault(obj => obj["name"].Value<string>() == readName);
+
+            //                menuArray.Remove(resToDeleted);
+
+            //                string output = Newtonsoft.Json.JsonConvert.SerializeObject(jObject, Newtonsoft.Json.Formatting.Indented);
+            //                File.WriteAllText(menuDatabase, output);
+            //                Console.WriteLine("Menu Item has been deleted...");
+            //                System.Threading.Thread.Sleep(1500);
+            //                Console.Clear();
+            //                //menuHelp();
+            //            } else {
+            //                Console.WriteLine("Reservation not found, please try again");
+            //                deleteMenu(menuType);
+            //            }
+            //            if (readResCode == "c") {
+            //                Console.Clear();
+            //                menu();
+
+            //            } else {
+            //                Console.Write("Invalid Reservation Code, Try Again!\n");
+            //                deleteMenu(menuType);
+            //            }
+            //        } else {
+            //            //menuHelp();
+            //        }
+
+            //    } catch (Exception) {
+
+            //        throw;
+            //    }
+            //}
 
             while (chosen)
             {
                 Console.Write("\n: ");
                 string choiceM = Console.ReadLine();
-                if (AdminSystem.adminLoggedin == true) {
-                    if (choiceM.Equals("am", StringComparison.OrdinalIgnoreCase)) {
-                        chosen = false;
-                        Console.WriteLine("Which menu would you like to add to? (Food, Drinks, Specials)");
-                        string menuTypeIn = Console.ReadLine();
-                        AddMenu(menuTypeIn);
-                        //csvcalls.addMenu();
-                    }
-                }
-                if (choiceM.Equals("do", StringComparison.OrdinalIgnoreCase)) {
+
+                if (choiceM.Equals("am", StringComparison.OrdinalIgnoreCase) && AdminSystem.adminLoggedin == true) {
+                    chosen = false;
+                    Console.Clear();
+                    Console.WriteLine("Which menu would you like to add to? (Food, Drinks, Specials)");
+                    string menuTypeIn = Console.ReadLine();
+                    AddMenu(menuTypeIn);
+                    //csvcalls.addMenu();
+                } else if (choiceM.Equals("dm", StringComparison.OrdinalIgnoreCase) && AdminSystem.adminLoggedin == true) {
+                    chosen = false;
+                    Console.Clear();
+                    Console.WriteLine("Which menu would you like to delete from? (Food, Drinks, Specials)");
+                    string menuTypeIn = Console.ReadLine();
+                    //deleteMenu(menuTypeIn);
+                    //csvcalls.addMenu();
+                } else if (choiceM.Equals("do", StringComparison.OrdinalIgnoreCase)) {
                     chosen = false;
                     Console.Clear();
                     Console.WriteLine("*** Welcome to the Daily Offers ***");
@@ -160,11 +234,11 @@ namespace testproject1 {
                     Console.Clear();
                     ColoredConsoleWriteLine(ConsoleColor.Red, "Welcome to Restaurant DaVinci!");
                     Console.WriteLine(
-                    "[1] - Reviews" +
-                    "\n[2] - Reservations" +
-                    "\n[3] - Our Menu" +
-                    "\n[E] - Close Application"
-                );
+                        "[1] - Reviews" +
+                        "\n[2] - Reservations" +
+                        "\n[3] - Our Menu" +
+                        "\n[E] - Close Application"
+                    );
                 } else if (string.IsNullOrEmpty(choiceM)) {   //EMPTY INPUT
                     Console.WriteLine("Not a valid input, please try again.");
                 } else {   //INVALID INPUT
